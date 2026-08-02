@@ -1,0 +1,6 @@
+{
+  "name": "Seoyoung Oh Portfolio",
+  "description": "Portfolio of Seoyoung Oh, a PhD candidate working across medical AI, computer vision, generative and diffusion modeling, trustworthy evidence evaluation, real-world implementation, and scientific communication.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

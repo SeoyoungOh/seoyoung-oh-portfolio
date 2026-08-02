@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --color-deep-ink: #20243C;
+  --color-primary-periwinkle: #A0A1F8;
+  --color-dusty-periwinkle: #9091DF;
+  --color-pale-lavender: #B6BAFA;
+  --color-muted-indigo: #A3A7E0;
+  --color-baby-blue: #B9E0FC;
+  --color-powder-blue: #A6C9E2;
+  --color-mint-cream: #DFF8E1;
+  --color-soft-sage: #C8DFCA;
+  --color-main-offwhite: #FBFBFF;
+  --color-white: #FFFFFF;
+  --color-muted-text: #626A7C;
+  --color-border: #D9DDEE;
+  
+  font-family: "Pretendard Variable", Pretendard, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-main-offwhite);
+  color: var(--color-deep-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Utilities and focus ring styling */
+:focus-visible {
+  outline: 2px solid var(--color-dusty-periwinkle);
+  outline-offset: 2px;
+}
+
+/* Selection style */
+::selection {
+  background-color: var(--color-baby-blue);
+  color: var(--color-deep-ink);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F5FA;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4C8DC;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9091DF;
+}

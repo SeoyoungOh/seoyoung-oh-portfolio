@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%" fill="none">
+  <rect width="800" height="500" fill="#20243C"/>
+  <g stroke="#9091DF" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.2">
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+  </g>
+
+  <!-- Input Diagnostic Label -->
+  <g transform="translate(60, 210)">
+    <rect width="160" height="80" rx="8" fill="#9091DF" fill-opacity="0.2" stroke="#9091DF" stroke-width="1.5"/>
+    <text x="80" y="38" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FBFBFF" text-anchor="middle">Global Label</text>
+    <text x="80" y="56" font-family="sans-serif" font-size="10" fill="#B6BAFA" text-anchor="middle">[Subject Diagnosis]</text>
+  </g>
+
+  <!-- Flow Arrow 1 -->
+  <path d="M 220 250 L 290 250" stroke="#B9E0FC" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Transformer Feature Extraction -->
+  <g transform="translate(290, 160)">
+    <rect width="180" height="180" rx="10" fill="#20243C" stroke="#A0A1F8" stroke-width="2"/>
+    <text x="90" y="30" font-family="sans-serif" font-size="12" font-weight="bold" fill="#A0A1F8" text-anchor="middle">Multi-Map Fusion</text>
+    
+    <rect x="25" y="50" width="130" height="28" rx="4" fill="#B9E0FC" fill-opacity="0.2" stroke="#B9E0FC"/>
+    <text x="90" y="68" font-family="sans-serif" font-size="10" fill="#FBFBFF" text-anchor="middle">Class Activation Map</text>
+    
+    <rect x="25" y="88" width="130" height="28" rx="4" fill="#A6C9E2" fill-opacity="0.2" stroke="#A6C9E2"/>
+    <text x="90" y="106" font-family="sans-serif" font-size="10" fill="#FBFBFF" text-anchor="middle">Spatial Gradient Map</text>
+
+    <rect x="25" y="126" width="130" height="34" rx="4" fill="#DFF8E1" fill-opacity="0.2" stroke="#DFF8E1"/>
+    <text x="90" y="147" font-family="sans-serif" font-size="10" font-weight="bold" fill="#DFF8E1" text-anchor="middle">Fused Evidence Map</text>
+  </g>
+
+  <!-- Flow Arrow 2 -->
+  <path d="M 470 250 L 540 250" stroke="#DFF8E1" stroke-width="2"/>
+
+  <!-- Localized Disease Region -->
+  <g transform="translate(540, 160)">
+    <rect width="200" height="180" rx="10" fill="#1B1E32" stroke="#C8DFCA" stroke-width="1.5"/>
+    <circle cx="100" cy="90" r="50" stroke="#9091DF" stroke-width="1" stroke-dasharray="3 3"/>
+    <!-- Heatmap spot -->
+    <circle cx="110" cy="85" r="24" fill="#A0A1F8" opacity="0.4"/>
+    <circle cx="110" cy="85" r="14" fill="#DFF8E1" opacity="0.8"/>
+    <text x="100" y="160" font-family="sans-serif" font-size="11" font-weight="bold" fill="#DFF8E1" text-anchor="middle">Spatial Disease Evidence</text>
+  </g>
+
+  <!-- Title Badge -->
+  <g transform="translate(40, 40)">
+    <rect x="0" y="0" width="310" height="42" rx="6" fill="#A0A1F8" fill-opacity="0.15" stroke="#A0A1F8" stroke-width="1"/>
+    <text x="15" y="26" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FBFBFF">Weakly Supervised Localization</text>
+  </g>
+</svg>
