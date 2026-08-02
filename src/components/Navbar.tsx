@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
 
   const navItems = [
     { label: 'Home', href: isHomePage ? '#hero' : '/' },
-    { label: 'Approach', href: isHomePage ? '#approach' : '/#approach' },
+    { label: 'Approach', href: isHomePage ? '#core-working-process' : '/#core-working-process' },
     { label: 'Work', href: isHomePage ? '#work' : '/#work' },
     { label: 'Publications', href: isHomePage ? '#publications' : '/#publications' },
     { label: 'Journey', href: isHomePage ? '#journey' : '/#journey' },
@@ -61,10 +61,10 @@ export const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-[#FBFBFF]/90 backdrop-blur-md border-b border-[#D9DDEE] shadow-xs py-3'
-          : 'bg-[#FBFBFF] py-4 border-b border-[#D9DDEE]/40'
+          : 'bg-[#FBFBFF]/40 backdrop-blur-sm py-4 border-b border-[#9091DF]/20'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -105,6 +105,7 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center gap-3">
           <a
             href={portfolioData.profile.cvUrl}
+            download="Seoyoung_Oh_CV_2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider bg-[#20243C] hover:bg-[#9091DF] text-[#FBFBFF] px-4 py-2 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-[#9091DF]"
@@ -144,6 +145,7 @@ export const Navbar: React.FC = () => {
           <div className="pt-6 border-t border-[#D9DDEE]/20 flex flex-col gap-4">
             <a
               href={portfolioData.profile.cvUrl}
+              download="Seoyoung_Oh_CV_2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full text-center flex items-center justify-center gap-2 bg-[#A0A1F8] text-[#20243C] font-bold py-3.5 rounded-lg text-sm uppercase tracking-wider hover:bg-[#B6BAFA] transition-colors"

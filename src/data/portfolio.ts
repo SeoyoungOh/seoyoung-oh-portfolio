@@ -73,6 +73,7 @@ export interface CaseStudy {
   doiUrl?: string;
   image?: string;
   imageAlt?: string;
+  images?: Record<string, { src: string; visible: boolean; alt?: string; caption?: string }>;
 }
 
 export interface MethodologicalTab {
@@ -132,7 +133,6 @@ export interface PortfolioData {
     cvUrl: string;
     social: {
       linkedin: string;
-      github: string;
       googleScholar: string;
     };
   };
@@ -189,10 +189,9 @@ export const portfolioData: PortfolioData = {
     email: "dkdlel9603@gmail.com",
     location: "Paris, France",
     availability: "Open to opportunities across AI research, applied science, and scientific or medical communication.",
-    cvUrl: "/cv/Seoyoung_Oh_CV_2026.pdf",
+    cvUrl: "/files/seoyoung-oh-cv-2026.pdf",
     social: {
-      linkedin: "https://www.linkedin.com/in/seoyoung-oh-medai",
-      github: "https://github.com/seoyoung-oh",
+      linkedin: "https://www.linkedin.com/in/seoyoungoh/",
       googleScholar: "https://scholar.google.com/citations?user=seoyoung_oh_placeholder",
     },
   },
@@ -363,12 +362,12 @@ export const portfolioData: PortfolioData = {
       id: "cs-2",
       slug: "weakly-supervised-localization",
       visible: true,
-      title: "Weakly Supervised Disease Localization from Globally Assigned Diagnostic Labels",
+      title: "Reliability-Calibrated Weakly Supervised Disease Localization",
       openingQuestion: "How can we localize disease evidence when only subject-level diagnoses are available?",
-      category: "Medical AI · Computer Vision · Weak Supervision",
-      status: "Published",
+      category: "MEDICAL AI · COMPUTER VISION · WEAK SUPERVISION · RELIABLE EVIDENCE",
+      status: "Published research + thesis extension",
       venue: "IEEE International Symposium on Biomedical Imaging (ISBI 2026)",
-      shortSummary: "Combined classification-derived spatial evidence and complementary localization cues via multi-map fusion to localize pathology using global subject-level diagnostic labels.",
+      shortSummary: "Combined classification-derived spatial evidence and complementary localization cues via multi-map fusion to localize pathology using global subject-level diagnostic labels, extended with reliability calibration and uncertainty gating.",
       realProblem: "Medical imaging datasets frequently provide global diagnostic labels without dense voxel-level disease annotations.",
       questionedAssumption: "That precise anatomical disease localization strictly requires labor-intensive voxel-wise expert annotations.",
       reframing: "Use classification-derived spatial evidence and complementary localization cues rather than requiring fully supervised lesion segmentation.",
@@ -377,26 +376,59 @@ export const portfolioData: PortfolioData = {
         "Spatial evidence extraction from class-activation patterns",
         "Complementary evidence map generation",
         "Multi-map fusion for noise reduction and spatial precision",
-        "Weakly supervised spatial disease localization pipeline",
+        "Reliability calibration and explanation uncertainty gating",
       ],
       evaluation: [
-        "Evaluated across diverse neurological MRI benchmarks: BraTS, MSLesSeg, and ADNI",
-        "Assessed localization accuracy against sparse ground truth validation masks",
+        "Evaluated across diverse neurological MRI benchmarks: BraTS, MSLesSeg, ADNI, and PULSE",
+        "Assessed localization accuracy against sparse ground truth validation masks and anatomical ROIs",
         "Presented orally at ISBI 2026",
       ],
       representativeResults: [
-        "Multi-map fusion achieved robust spatial alignment with disease sites across datasets",
-        "Demonstrated superior localization precision over standard CAM and Grad-CAM baselines",
-        "Validated across BraTS, MSLesSeg, and ADNI datasets",
+        "BraTS Max-IoU: 0.39 ± 0.01, Pixel-AUPRC: 0.33 ± 0.02, Recall@10: 0.77 ± 0.02",
+        "MSLesSeg Max-IoU: 0.28 ± 0.03, Pixel-AUPRC: 0.22 ± 0.01, Recall@10: 0.65 ± 0.01",
+        "PULSE Hit@ROI: 0.68 ± 0.01, Reliable ROI Concentration: 0.64 ± 0.01",
         "ISBI 2026 Oral Presentation selection",
       ],
-      whyItMatters: "Enables clinical datasets lacking dense manual annotations to yield spatial evidence for research and exploratory disease mapping.",
-      limitations: "Localization relies on global diagnostic labels; spatial precision depends on dataset scale and feature discriminability.",
-      personalContribution: "Formulated the multi-map fusion architecture, implemented the transformer feature extractors, conducted cross-dataset experiments, and delivered the oral presentation.",
+      whyItMatters: "Weak supervision makes spatial analysis possible when dense annotations are unavailable. Reliability calibration makes the resulting evidence more suitable for cautious interpretation.",
+      limitations: "In mask-free neurodegeneration and ALS settings, the maps should be interpreted as classifier-derived, reliability-filtered spatial evidence—not as disease ground truth.",
+      personalContribution: "As the doctoral researcher and first author, I worked on problem formulation, method development, implementation, experimental design, reliability evaluation, result interpretation, and manuscript preparation.",
       publicationSlug: "multimap-fusion",
       localPaperPath: "/papers/multimap-fusion-isbi-2026.pdf",
-      image: "/images/project-weakly-supervised-localization.webp",
-      imageAlt: "Multi-map fusion pipeline for weakly supervised disease localization",
+      doiUrl: "https://doi.org/10.1109/ISBI61048.2026.11516027",
+      image: "/images/work/weak-supervision/rc-explainer-overview.webp",
+      imageAlt: "RC-Explainer architecture and workflow for weakly supervised disease localization",
+      images: {
+        supervisionSpectrum: {
+          src: "/images/work/weak-supervision/supervision-spectrum.webp",
+          visible: true,
+          alt: "Diagram comparing fully supervised segmentation, weak spatial supervision, diagnostic-label-only localization, and healthy-only normal modeling.",
+          caption: "Supervision spectrum for disease localization, from voxel-wise annotation to diagnostic-label-only and healthy-only learning."
+        },
+        reliabilityMotivation: {
+          src: "/images/work/weak-supervision/reliability-motivation.webp",
+          visible: true,
+          alt: "Scientific diagram showing limitations of single weak-localization heatmaps, including incompleteness, instability, disagreement, and uncertain interpretability.",
+          caption: "Limitations of conventional weak localization that motivated reliability-calibrated evidence fusion."
+        },
+        rcExplainerOverview: {
+          src: "/images/work/weak-supervision/rc-explainer-overview.webp",
+          visible: true,
+          alt: "RC-Explainer workflow combining diagnostic classification, multiple transformer localization cues, reliability calibration, uncertainty gating, final evidence maps, and ROI-oriented interpretation.",
+          caption: "RC-Explainer combines complementary transformer-derived evidence cues with spatial reliability calibration, explanation uncertainty, and ROI-oriented outputs."
+        },
+        qualitativeReliability: {
+          src: "/images/work/weak-supervision/qualitative-reliability.webp",
+          visible: true,
+          alt: "Qualitative comparison across BraTS, MSLesSeg, ADNI, and PULSE showing input images, reference masks or ROIs, baseline localization maps, RC-Explainer evidence, uncertainty maps, and reliable evidence overlays.",
+          caption: "Qualitative reliability examples across BraTS, MSLesSeg, ADNI, and PULSE."
+        },
+        pulseInputComparison: {
+          src: "/images/work/weak-supervision/pulse-input-comparison.webp",
+          visible: true,
+          alt: "PULSE brain MRI comparison showing whole-brain T1-weighted input, brainstem-focused T1-weighted input, and brainstem-focused T1-weighted plus fractional anisotropy input.",
+          caption: "Representative PULSE comparisons across whole-brain T1w, brainstem-focused T1w, and brainstem-focused T1w+FA input regimes."
+        }
+      }
     },
     {
       id: "cs-3",
@@ -487,7 +519,7 @@ export const portfolioData: PortfolioData = {
       year: 2026,
       status: "Accepted",
       presentationType: "",
-      category: "Medical AI · Trustworthy AI",
+      category: "MEDICAL AI · GENERATIVE MODELING · RELIABLE EVIDENCE · DIFFUSION MODELS",
       problem: "Normal-only anomaly localization can generate visually convincing residual maps containing pathology-related change, anatomical variability, acquisition effects, preprocessing mismatch, or projection instability.",
       contribution: "Proposes a healthy-reference calibration protocol establishing multi-view residual aggregation and false-positive-controlled evidence selection without tuning on abnormal data.",
       representativeResults: [

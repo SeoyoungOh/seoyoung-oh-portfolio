@@ -15,9 +15,25 @@ import {
   Layers,
 } from 'lucide-react';
 
+import { WeaklySupervisedDetail } from './WeaklySupervisedDetail';
+import { ReliableNormalProjectionDetail } from './ReliableNormalProjectionDetail';
+import { BrainstemSegmentationDetail } from './BrainstemSegmentationDetail';
+
 export const CaseStudyDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+
+  if (slug === 'weakly-supervised-localization') {
+    return <WeaklySupervisedDetail />;
+  }
+
+  if (slug === 'reliable-normal-projection') {
+    return <ReliableNormalProjectionDetail />;
+  }
+
+  if (slug === 'brainstem-segmentation') {
+    return <BrainstemSegmentationDetail />;
+  }
 
   const study = portfolioData.caseStudies.find((c) => c.slug === slug);
 

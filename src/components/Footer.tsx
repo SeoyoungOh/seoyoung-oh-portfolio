@@ -1,6 +1,6 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolio';
-import { ArrowUp, Mail, Linkedin, Github, GraduationCap } from 'lucide-react';
+import { ArrowUp, Mail, Linkedin, GraduationCap } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { profile } = portfolioData;
@@ -42,18 +42,9 @@ export const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-lg bg-[#20243C] hover:bg-[#A0A1F8]/20 text-[#A0A1F8] transition-colors focus-visible:outline-2 focus-visible:outline-[#A0A1F8]"
-            aria-label="LinkedIn"
+            aria-label="Visit Seoyoung Oh’s LinkedIn profile"
           >
             <Linkedin className="w-4 h-4" />
-          </a>
-          <a
-            href={profile.social.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 rounded-lg bg-[#20243C] hover:bg-[#A0A1F8]/20 text-[#A0A1F8] transition-colors focus-visible:outline-2 focus-visible:outline-[#A0A1F8]"
-            aria-label="GitHub"
-          >
-            <Github className="w-4 h-4" />
           </a>
           <a
             href={profile.social.googleScholar}

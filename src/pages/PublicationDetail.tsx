@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { portfolioData } from '../data/portfolio';
 import { Footer } from '../components/Footer';
+import { Isbi2026Content } from '../components/isbi2026/Isbi2026Content';
+import { Eccv2026Content } from '../components/eccv2026/Eccv2026Content';
+import { Isbi2024Content } from '../components/isbi2024/Isbi2024Content';
 import {
   ArrowLeft,
   BookOpen,
@@ -193,67 +196,75 @@ export const PublicationDetail: React.FC = () => {
         )}
 
         {/* Content Sections */}
-        <div className="space-y-8">
-          
-          {/* Research Problem */}
-          <div className="bg-[#FFFFFF] p-6 sm:p-8 rounded-2xl border border-[#D9DDEE]">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#9091DF] mb-3">
-              RESEARCH PROBLEM
-            </h2>
-            <p className="text-base text-[#20243C] font-medium leading-relaxed">
-              {pub.problem}
-            </p>
-          </div>
-
-          {/* Core Contribution */}
-          <div className="bg-[#FFFFFF] p-6 sm:p-8 rounded-2xl border border-[#D9DDEE]">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#9091DF] mb-3">
-              CORE SCIENTIFIC CONTRIBUTION
-            </h2>
-            <p className="text-base text-[#20243C] font-semibold leading-relaxed">
-              {pub.contribution}
-            </p>
-          </div>
-
-          {/* Representative Results */}
-          {pub.representativeResults && pub.representativeResults.length > 0 && (
-            <div className="bg-[#20243C] text-[#FBFBFF] p-6 sm:p-8 rounded-2xl border border-[#D9DDEE]/20">
-              <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#DFF8E1] mb-4">
-                REPRESENTATIVE RESULTS & VERIFIED METRICS
+        {pub.slug === 'multimap-fusion' ? (
+          <Isbi2026Content />
+        ) : pub.slug === 'reliable-normal-projection' ? (
+          <Eccv2026Content />
+        ) : pub.slug === 'brainstem-segmentation' ? (
+          <Isbi2024Content />
+        ) : (
+          <div className="space-y-8">
+            
+            {/* Research Problem */}
+            <div className="bg-[#FFFFFF] p-6 sm:p-8 rounded-2xl border border-[#D9DDEE]">
+              <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#9091DF] mb-3">
+                RESEARCH PROBLEM
               </h2>
-              <ul className="space-y-3">
-                {pub.representativeResults.map((res, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-sm font-semibold text-[#FBFBFF] bg-[#181A2D] p-3.5 rounded-xl border border-[#A0A1F8]/20">
-                    <CheckCircle2 className="w-4 h-4 text-[#DFF8E1] shrink-0 mt-0.5" />
-                    <span>{res}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-base text-[#20243C] font-medium leading-relaxed">
+                {pub.problem}
+              </p>
             </div>
-          )}
 
-          {/* Why It Matters */}
-          <div className="bg-[#B9E0FC]/20 p-6 sm:p-8 rounded-2xl border border-[#A6C9E2]/50">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#9091DF] mb-3">
-              WHY IT MATTERS
-            </h2>
-            <p className="text-sm text-[#20243C] font-semibold italic leading-relaxed">
-              “{pub.whyItMatters}”
-            </p>
-          </div>
-
-          {/* Limitations & Interpretation Boundaries */}
-          <div className="bg-[#FBFBFF] p-6 sm:p-8 rounded-2xl border border-[#D9DDEE]">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#626A7C] mb-3">
-              <AlertTriangle className="w-4 h-4 text-[#9091DF]" />
-              <span>LIMITATIONS & INTERPRETATION BOUNDARIES</span>
+            {/* Core Contribution */}
+            <div className="bg-[#FFFFFF] p-6 sm:p-8 rounded-2xl border border-[#D9DDEE]">
+              <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#9091DF] mb-3">
+                CORE SCIENTIFIC CONTRIBUTION
+              </h2>
+              <p className="text-base text-[#20243C] font-semibold leading-relaxed">
+                {pub.contribution}
+              </p>
             </div>
-            <p className="text-sm font-medium text-[#20243C] leading-relaxed">
-              {pub.limitations}
-            </p>
-          </div>
 
-        </div>
+            {/* Representative Results */}
+            {pub.representativeResults && pub.representativeResults.length > 0 && (
+              <div className="bg-[#20243C] text-[#FBFBFF] p-6 sm:p-8 rounded-2xl border border-[#D9DDEE]/20">
+                <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#DFF8E1] mb-4">
+                  REPRESENTATIVE RESULTS & VERIFIED METRICS
+                </h2>
+                <ul className="space-y-3">
+                  {pub.representativeResults.map((res, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm font-semibold text-[#FBFBFF] bg-[#181A2D] p-3.5 rounded-xl border border-[#A0A1F8]/20">
+                      <CheckCircle2 className="w-4 h-4 text-[#DFF8E1] shrink-0 mt-0.5" />
+                      <span>{res}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Why It Matters */}
+            <div className="bg-[#B9E0FC]/20 p-6 sm:p-8 rounded-2xl border border-[#A6C9E2]/50">
+              <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#9091DF] mb-3">
+                WHY IT MATTERS
+              </h2>
+              <p className="text-sm text-[#20243C] font-semibold italic leading-relaxed">
+                “{pub.whyItMatters}”
+              </p>
+            </div>
+
+            {/* Limitations & Interpretation Boundaries */}
+            <div className="bg-[#FBFBFF] p-6 sm:p-8 rounded-2xl border border-[#D9DDEE]">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#626A7C] mb-3">
+                <AlertTriangle className="w-4 h-4 text-[#9091DF]" />
+                <span>LIMITATIONS & INTERPRETATION BOUNDARIES</span>
+              </div>
+              <p className="text-sm font-medium text-[#20243C] leading-relaxed">
+                {pub.limitations}
+              </p>
+            </div>
+
+          </div>
+        )}
 
         {/* Back Link */}
         <div className="mt-12 pt-8 border-t border-[#D9DDEE] flex items-center justify-between">

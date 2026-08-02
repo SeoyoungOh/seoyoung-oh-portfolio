@@ -1,6 +1,6 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolio';
-import { Mail, Linkedin, Github, GraduationCap, FileText, ArrowUpRight } from 'lucide-react';
+import { Mail, Linkedin, GraduationCap, FileText, ArrowUpRight } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const { contact, profile } = portfolioData;
@@ -35,10 +35,11 @@ export const ContactSection: React.FC = () => {
           <div className="mb-10">
             <a
               href={`mailto:${contact.email}`}
+              aria-label="Send an email to Seoyoung Oh"
               className="inline-flex items-center gap-3 bg-[#A0A1F8] hover:bg-[#B6BAFA] text-[#20243C] font-extrabold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-lg transition-all transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-[#DFF8E1]"
             >
               <Mail className="w-5 h-5" />
-              <span>{contact.email}</span>
+              <span>Send Me a Message</span>
               <ArrowUpRight className="w-5 h-5" />
             </a>
           </div>
@@ -49,20 +50,11 @@ export const ContactSection: React.FC = () => {
               href={profile.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit Seoyoung Oh’s LinkedIn profile"
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FBFBFF]/10 hover:bg-[#FBFBFF]/20 text-[#FBFBFF] text-xs font-bold uppercase tracking-wider border border-[#D9DDEE]/20 transition-colors focus-visible:outline-2 focus-visible:outline-[#A0A1F8]"
             >
               <Linkedin className="w-4 h-4 text-[#A0A1F8]" />
               <span>LinkedIn</span>
-            </a>
-
-            <a
-              href={profile.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FBFBFF]/10 hover:bg-[#FBFBFF]/20 text-[#FBFBFF] text-xs font-bold uppercase tracking-wider border border-[#D9DDEE]/20 transition-colors focus-visible:outline-2 focus-visible:outline-[#A0A1F8]"
-            >
-              <Github className="w-4 h-4 text-[#A0A1F8]" />
-              <span>GitHub</span>
             </a>
 
             <a
@@ -77,6 +69,7 @@ export const ContactSection: React.FC = () => {
 
             <a
               href={profile.cvUrl}
+              download="Seoyoung_Oh_CV_2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#DFF8E1] hover:bg-[#C8DFCA] text-[#20243C] text-xs font-bold uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-[#A0A1F8]"
