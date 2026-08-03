@@ -33,6 +33,7 @@ export interface Publication {
   status: 'Published' | 'Accepted' | 'Under Review' | 'Manuscript';
   presentationType?: 'Oral' | 'Poster' | 'Journal' | '';
   category: string;
+  categories?: string[];
   problem: string;
   contribution: string;
   representativeResults?: string[];
@@ -585,28 +586,31 @@ export const portfolioData: PortfolioData = {
       status: "Published",
       presentationType: "Oral",
       category: "Computer Vision",
+      categories: ["COMPUTER VISION", "SEMANTIC SEGMENTATION", "CONTEXT MODELING"],
       problem: "Facial skin problem detection requires precise localized identification across diverse skin condition classes.",
       contribution: "Proposed an object-by-object learning framework for fine-grained detection of facial skin features.",
       whyItMatters: "Advanced specialized object detection pipelines for computer vision applications in non-standard imaging environments.",
       limitations: "Designed for specialized camera hardware and specific skin condition categories.",
-      localPaperPath: "/papers/rethnet-iccv-workshop-2019.pdf",
+      localPaperPath: "/papers/rethnet-iccv-vrmi-2019.pdf",
     },
     {
       id: "pub-5",
       slug: "blockchain-real-estate",
       visible: true,
-      title: "Block Chain Applied Technology to Improve Reliability of Real Estate Market",
+      title: "Block Chain Application Technology to Improve Reliability of Real Estate Market",
       authors: ["Seoyoung Oh", "Changhoon Lee"],
       venue: "The Journal of Society for e-Business Studies",
       year: 2017,
       status: "Published",
       presentationType: "Journal",
-      category: "Other Research",
-      problem: "Real estate transaction records suffer from vulnerability to tampering and lack of transparent verification.",
-      contribution: "Analyzed cryptographic blockchain application architectures to improve data reliability and transaction verification.",
-      whyItMatters: "Early exploration of cryptographic verification models and immutable record integrity.",
-      limitations: "Theoretical and algorithmic analysis preceding enterprise blockchain scaling.",
-      localPaperPath: "/papers/blockchain-real-estate-2017.pdf",
+      category: "BLOCKCHAIN · DISTRIBUTED SYSTEMS · INFORMATION INTEGRITY",
+      categories: ["BLOCKCHAIN", "DISTRIBUTED SYSTEMS", "INFORMATION INTEGRITY"],
+      problem: "Online real-estate services made listings easier to access—but not necessarily more trustworthy.",
+      contribution: "Proposed a blockchain-based real-estate listing verification service architecture connecting property owners, agents, buyers, and platforms.",
+      whyItMatters: "Early 2017 exploration of shared append-only records to combat false listings and management omissions.",
+      limitations: "Conceptual model without empirical field trial, production deployment, or quantitative throughput benchmarking.",
+      localPaperPath: "/papers/blockchain-real-estate-jsebs-2017.pdf",
+      doiUrl: "https://doi.org/10.7838/jsebs.2017.22.1.051",
     },
   ],
 

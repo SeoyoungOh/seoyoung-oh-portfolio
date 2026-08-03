@@ -5,6 +5,8 @@ import { Footer } from '../components/Footer';
 import { Isbi2026Content } from '../components/isbi2026/Isbi2026Content';
 import { Eccv2026Content } from '../components/eccv2026/Eccv2026Content';
 import { Isbi2024Content } from '../components/isbi2024/Isbi2024Content';
+import { RethnetContent } from '../components/rethnet/RethnetContent';
+import { BlockchainRealEstateContent } from '../components/blockchain-real-estate/BlockchainRealEstateContent';
 import {
   ArrowLeft,
   BookOpen,
@@ -71,9 +73,17 @@ export const PublicationDetail: React.FC = () => {
 
         {/* Badges & Category */}
         <div className="flex flex-wrap items-center gap-2 mb-4">
-          <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#A0A1F8]/15 text-[#20243C] border border-[#A0A1F8]/30">
-            {pub.category}
-          </span>
+          {pub.categories && pub.categories.length > 0 ? (
+            pub.categories.map((cat, idx) => (
+              <span key={idx} className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#A0A1F8]/15 text-[#20243C] border border-[#A0A1F8]/30">
+                {cat}
+              </span>
+            ))
+          ) : (
+            <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#A0A1F8]/15 text-[#20243C] border border-[#A0A1F8]/30">
+              {pub.category}
+            </span>
+          )}
           <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#DFF8E1] text-[#20243C] border border-[#C8DFCA]">
             {pub.status}
           </span>
@@ -82,7 +92,7 @@ export const PublicationDetail: React.FC = () => {
               {pub.presentationType === 'Oral' && <Mic className="w-3.5 h-3.5" />}
               {pub.presentationType === 'Poster' && <BookOpen className="w-3.5 h-3.5" />}
               {pub.presentationType === 'Journal' && <FileCheck className="w-3.5 h-3.5" />}
-              <span>{pub.presentationType} Presentation</span>
+              <span>{pub.presentationType === 'Journal' ? 'Journal Article' : `${pub.presentationType} Presentation`}</span>
             </span>
           )}
           <span className="text-xs font-semibold text-[#626A7C]">
@@ -105,10 +115,12 @@ export const PublicationDetail: React.FC = () => {
               <React.Fragment key={idx}>
                 {author === 'Seoyoung Oh' ? (
                   <span className="font-extrabold text-[#20243C] underline decoration-[#9091DF] underline-offset-4 bg-[#A0A1F8]/20 px-1 py-0.5 rounded">
-                    {author}
+                    {author}{pub.slug === 'blockchain-real-estate' ? ' (First Author)' : ''}
                   </span>
                 ) : (
-                  <span>{author}</span>
+                  <span>
+                    {author}{pub.slug === 'blockchain-real-estate' && author === 'Changhoon Lee' ? ' (Corresponding Author)' : ''}
+                  </span>
                 )}
                 {idx < pub.authors.length - 1 ? ', ' : ''}
               </React.Fragment>
@@ -202,6 +214,10 @@ export const PublicationDetail: React.FC = () => {
           <Eccv2026Content />
         ) : pub.slug === 'brainstem-segmentation' ? (
           <Isbi2024Content />
+        ) : pub.slug === 'rethnet' ? (
+          <RethnetContent />
+        ) : pub.slug === 'blockchain-real-estate' ? (
+          <BlockchainRealEstateContent />
         ) : (
           <div className="space-y-8">
             
