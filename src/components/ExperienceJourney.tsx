@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { portfolioData } from '../data/portfolio';
-import { Briefcase, Calendar, Building2, UserCheck } from 'lucide-react';
+import { Briefcase, Calendar, Building2, UserCheck, ArrowRight } from 'lucide-react';
 
 export const ExperienceJourney: React.FC = () => {
   const { experience } = portfolioData;
@@ -24,64 +25,84 @@ export const ExperienceJourney: React.FC = () => {
 
         {/* Timeline Stack */}
         <div className="relative border-l-2 border-[#D9DDEE] ml-4 sm:ml-6 space-y-10 pl-6 sm:pl-8">
-          {experience.map((exp) => (
-            <div key={exp.id} className="relative group">
-              
-              {/* Timeline Bullet Node */}
-              <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#FBFBFF] stroke-2 border-2 border-[#9091DF] group-hover:border-[#A0A1F8] group-hover:scale-125 transition-all" />
+          {experience.map((exp) => {
+            const isClickable = Boolean(exp.route);
+            const CardWrapper = isClickable ? Link : 'div';
+            const wrapperProps = isClickable
+              ? {
+                  to: exp.route!,
+                  'aria-label': `View PhD Research Hub: ${exp.role}`,
+                  className:
+                    'block bg-[#FFFFFF] rounded-2xl p-6 border border-[#D9DDEE] hover:border-[#9091DF] hover:shadow-md transition-all group/card focus-visible:outline-2 focus-visible:outline-[#9091DF]',
+                }
+              : {
+                  className:
+                    'bg-[#FFFFFF] rounded-2xl p-6 border border-[#D9DDEE] hover:border-[#9091DF] transition-all',
+                };
 
-              {/* Main Card */}
-              <div className="bg-[#FFFFFF] rounded-2xl p-6 border border-[#D9DDEE] hover:border-[#9091DF] transition-all">
-                
-                {/* Header: Role & Theme */}
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#A0A1F8]/15 text-[#20243C] border border-[#A0A1F8]/30">
-                    {exp.theme}
-                  </span>
-                  <div className="flex items-center gap-1 text-xs font-semibold text-[#626A7C]">
-                    <Calendar className="w-3.5 h-3.5 text-[#9091DF]" />
-                    <span>{exp.dates}</span>
-                  </div>
-                </div>
+            return (
+              <div key={exp.id} className="relative group">
+                {/* Timeline Bullet Node */}
+                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#FBFBFF] stroke-2 border-2 border-[#9091DF] group-hover:border-[#A0A1F8] group-hover:scale-125 transition-all" />
 
-                {/* Role Title */}
-                <h3 className="text-xl font-extrabold text-[#20243C] mb-2 flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-[#9091DF]" />
-                  <span>{exp.role}</span>
-                </h3>
-
-                {/* Institutions */}
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium text-[#626A7C] mb-4">
-                  <Building2 className="w-3.5 h-3.5 text-[#9091DF] shrink-0" />
-                  {exp.institutions.map((inst, idx) => (
-                    <span key={idx} className="bg-[#B9E0FC]/20 px-2 py-0.5 rounded text-[#20243C]">
-                      {inst}
+                {/* Main Card */}
+                <CardWrapper {...(wrapperProps as any)}>
+                  {/* Header: Role & Theme */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#A0A1F8]/15 text-[#20243C] border border-[#A0A1F8]/30">
+                      {exp.theme}
                     </span>
-                  ))}
-                </div>
-
-                {/* Supervisor if present */}
-                {exp.supervisor && (
-                  <div className="flex items-center gap-1.5 text-xs font-medium text-[#20243C] mb-4 bg-[#FBFBFF] p-2 rounded-lg border border-[#D9DDEE]/60 inline-flex">
-                    <UserCheck className="w-3.5 h-3.5 text-[#9091DF]" />
-                    <span>Supervisor: {exp.supervisor}</span>
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-1 text-xs font-semibold text-[#626A7C]">
+                        <Calendar className="w-3.5 h-3.5 text-[#9091DF]" />
+                        <span>{exp.dates}</span>
+                      </div>
+                      {isClickable && (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-[#9091DF] group-hover/card:text-[#20243C] transition-colors">
+                          <span>View PhD</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover/card:translate-x-0.5 transition-transform" />
+                        </span>
+                      )}
+                    </div>
                   </div>
-                )}
 
-                {/* Focus List */}
-                <ul className="space-y-2 pt-2 border-t border-[#D9DDEE]/40">
-                  {exp.focus.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-xs font-medium text-[#20243C]">
-                      <span className="text-[#9091DF]">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                  {/* Role Title */}
+                  <h3 className="text-xl font-extrabold text-[#20243C] mb-2 flex items-center gap-2">
+                    <Briefcase className="w-4 h-4 text-[#9091DF]" />
+                    <span>{exp.role}</span>
+                  </h3>
 
+                  {/* Institutions */}
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium text-[#626A7C] mb-4">
+                    <Building2 className="w-3.5 h-3.5 text-[#9091DF] shrink-0" />
+                    {exp.institutions.map((inst, idx) => (
+                      <span key={idx} className="bg-[#B9E0FC]/20 px-2 py-0.5 rounded text-[#20243C]">
+                        {inst}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Supervisor if present */}
+                  {exp.supervisor && (
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-[#20243C] mb-4 bg-[#FBFBFF] p-2 rounded-lg border border-[#D9DDEE]/60 inline-flex">
+                      <UserCheck className="w-3.5 h-3.5 text-[#9091DF]" />
+                      <span>Supervisor: {exp.supervisor}</span>
+                    </div>
+                  )}
+
+                  {/* Focus List */}
+                  <ul className="space-y-2 pt-2 border-t border-[#D9DDEE]/40">
+                    {exp.focus.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-xs font-medium text-[#20243C]">
+                        <span className="text-[#9091DF]">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardWrapper>
               </div>
-
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

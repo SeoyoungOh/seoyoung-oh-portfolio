@@ -17,6 +17,7 @@ import {
   CheckCircle2,
   AlertTriangle,
   Layers,
+  Sparkles,
 } from 'lucide-react';
 
 export const PublicationDetail: React.FC = () => {
@@ -50,6 +51,11 @@ export const PublicationDetail: React.FC = () => {
   const relatedCaseStudy = pub.projectSlug
     ? portfolioData.caseStudies.find((c) => c.slug === pub.projectSlug)
     : null;
+
+  // Related PhD research work lookup
+  const relatedPhDWork = portfolioData.phd?.researchWorks?.find(
+    (w) => w.publicationSlug === pub.slug
+  );
 
   const hasPaperUrl = Boolean(pub.paperUrl && pub.paperUrl.trim() !== '');
   const hasLocalPaper = Boolean(pub.localPaperPath && pub.localPaperPath.trim() !== '');
@@ -98,6 +104,15 @@ export const PublicationDetail: React.FC = () => {
           <span className="text-xs font-semibold text-[#626A7C]">
             {pub.venue} ({pub.year})
           </span>
+          {relatedPhDWork && (
+            <Link
+              to={relatedPhDWork.route}
+              className="text-xs font-bold px-3 py-1 rounded-full bg-[#A0A1F8]/20 text-[#20243C] border border-[#A0A1F8]/40 hover:bg-[#A0A1F8]/30 transition-colors flex items-center gap-1.5"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#9091DF]" />
+              <span>PhD Research Work {relatedPhDWork.number}</span>
+            </Link>
+          )}
         </div>
 
         {/* Full Title */}
@@ -129,11 +144,21 @@ export const PublicationDetail: React.FC = () => {
         </div>
 
         {/* Action Link Bar */}
-        {(hasPaperUrl || hasLocalPaper || hasDoi || hasProceedings || hasPresentation || relatedCaseStudy) && (
+        {(hasPaperUrl || hasLocalPaper || hasDoi || hasProceedings || hasPresentation || relatedCaseStudy || relatedPhDWork) && (
           <div className="flex flex-wrap items-center gap-3 p-4 rounded-xl bg-[#20243C] text-[#FBFBFF] mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#A0A1F8] mr-2">
               Access & Media:
             </span>
+
+            {relatedPhDWork && (
+              <Link
+                to={relatedPhDWork.route}
+                className="inline-flex items-center gap-1.5 text-xs font-bold bg-[#A0A1F8] text-[#20243C] px-4 py-2 rounded-lg hover:bg-[#B6BAFA] transition-colors"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>PhD Research Work {relatedPhDWork.number}</span>
+              </Link>
+            )}
 
             {hasPaperUrl && (
               <a

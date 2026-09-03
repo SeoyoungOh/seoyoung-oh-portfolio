@@ -97,6 +97,7 @@ export interface ExperienceItem {
   theme: string;
   focus: string[];
   supervisor?: string;
+  route?: string;
 }
 
 export interface EducationItem {
@@ -107,6 +108,49 @@ export interface EducationItem {
   importantNote?: string;
   grade?: string;
   achievement?: string;
+  route?: string;
+}
+
+export interface PhDResearchWork {
+  id: string;
+  number: string;
+  slug: string;
+  title: string;
+  category: string;
+  progressionStage: string;
+  summary: string;
+  tags: string[];
+  route: string;
+  publicationSlug: string;
+  relatedResearchLabel: string;
+  problem: string;
+  whyItMatters: string;
+  approach?: string[];
+  keyResults?: string[];
+  whatWeLearned?: string[];
+}
+
+export interface PhDData {
+  hero: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    institutions: string[];
+    supervisors: string[];
+    cosupervisors: string[];
+  };
+  journey: {
+    eyebrow: string;
+    headline: string;
+    progressionQuestion: string;
+    progressionStages: Array<{
+      number: string;
+      stage: string;
+      label: string;
+    }>;
+  };
+  researchWorks: PhDResearchWork[];
 }
 
 export interface SkillCategory {
@@ -170,6 +214,7 @@ export interface PortfolioData {
     level: string;
   }>;
   contributions: ContributionArea[];
+  phd: PhDData;
   contact: {
     headline: string;
     supportingText: string;
@@ -618,6 +663,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "exp-1",
       role: "PhD Researcher",
+      route: "/phd",
       dates: "October 2023 – Present",
       institutions: [
         "Institut Supérieur d’Électronique de Paris",
@@ -693,6 +739,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "edu-1",
       degree: "PhD Candidate in Artificial Intelligence and Medical Image Analysis",
+      route: "/phd",
       institutions: [
         "Institut Supérieur d’Électronique de Paris",
         "Laboratoire d’Imagerie Biomédicale",
@@ -837,6 +884,122 @@ export const portfolioData: PortfolioData = {
     headline: "“Let’s turn complex evidence into solutions people can trust and use.”",
     supportingText: "I am open to opportunities where scientific problem solving, reliable evidence, and clear communication come together.",
     email: "dkdlel9603@gmail.com",
+  },
+
+  phd: {
+    hero: {
+      eyebrow: "DOCTORAL RESEARCH · 2023–2026",
+      title: "MRI Segmentation of Brainstem Structures Using Deep Learning Techniques",
+      subtitle: "Application to Amyotrophic Lateral Sclerosis",
+      description: "My doctoral research investigates how clinically meaningful spatial evidence can be extracted from brain MRI when precise voxel-level annotations are scarce or unavailable.\n\nStarting from supervised brainstem segmentation, the research progressively moves toward annotation-efficient disease localization through weak supervision and healthy-only normal modeling.",
+      institutions: [
+        "ISEP",
+        "Laboratoire d’Imagerie Biomédicale",
+        "Sorbonne Université",
+        "Inserm",
+        "CNRS",
+      ],
+      supervisors: [
+        "Jérémie Sublime",
+        "Véronique Marchand-Pauvert",
+      ],
+      cosupervisors: [
+        "Hélène Urien",
+        "Mélanie Pélégrini-Issac",
+      ],
+    },
+    journey: {
+      eyebrow: "RESEARCH JOURNEY",
+      headline: "From segmentation to reliable evidence under annotation scarcity.",
+      progressionQuestion: "How can we progressively reduce our dependence on spatial annotation while preserving meaningful disease localization?",
+      progressionStages: [
+        { number: "01", stage: "Voxel-wise labels", label: "Supervised Learning" },
+        { number: "02", stage: "Diagnostic labels only", label: "Weak Supervision" },
+        { number: "03", stage: "Healthy MRI only", label: "Normal Modeling" },
+      ],
+    },
+    researchWorks: [
+      {
+        id: "phd-work-01",
+        number: "01",
+        slug: "brainstem-segmentation",
+        title: "Brainstem Segmentation with Limited Annotation",
+        category: "SUPERVISED LEARNING",
+        progressionStage: "Voxel-wise labels",
+        summary: "Establishing the anatomical and methodological foundations for brainstem MRI analysis under limited voxel-wise annotation.",
+        tags: ["Segmentation", "Transfer Learning", "Brainstem MRI", "Limited Labels"],
+        route: "/phd/research/brainstem-segmentation",
+        publicationSlug: "brainstem-segmentation",
+        relatedResearchLabel: "Brainstem Segmentation with Limited Annotation",
+        problem: "The brainstem is small and anatomically complex, while dedicated training annotations are limited.",
+        whyItMatters: "Offers practical guidelines for segmenting small, annotation-scarce anatomical targets in neuroimaging research and demonstrates how representation reuse from broader brain regions supports small structure segmentation.",
+        approach: [
+          "Systematic evaluation of deep neural network architectures for brainstem segmentation",
+          "Transfer learning from models pretrained on larger public neuroimaging cohorts",
+          "Cross-validation protocols adapted to limited sample sizes and anatomical variability",
+        ],
+        keyResults: [
+          "Compared deep architectures and transfer learning from models pretrained on other brain regions",
+          "Presented poster at IEEE International Symposium on Biomedical Imaging (ISBI 2024)",
+        ],
+        whatWeLearned: [],
+      },
+      {
+        id: "phd-work-02",
+        number: "02",
+        slug: "weakly-supervised-localization",
+        title: "Reliability-Calibrated Weakly Supervised Disease Localization",
+        category: "DIAGNOSTIC LABELS ONLY",
+        progressionStage: "Diagnostic labels only",
+        summary: "Moving beyond dense segmentation by extracting disease-discriminative spatial evidence from diagnostic labels using complementary transformer-derived cues and reliability calibration.",
+        tags: ["Weak Supervision", "DINOv3", "Disease Localization", "Explainable AI", "Reliability"],
+        route: "/phd/research/weakly-supervised-localization",
+        publicationSlug: "multimap-fusion",
+        relatedResearchLabel: "Reliability-Calibrated Weakly Supervised Disease Localization",
+        problem: "Medical imaging datasets frequently provide global diagnostic labels without dense voxel-level disease annotations.",
+        whyItMatters: "Weak supervision makes spatial analysis possible when dense annotations are unavailable. Reliability calibration makes the resulting evidence more suitable for cautious interpretation.",
+        approach: [
+          "Transformer-based global diagnostic classification model",
+          "Spatial evidence extraction from class-activation patterns",
+          "Complementary evidence map generation",
+          "Multi-map fusion for noise reduction and spatial precision",
+          "Reliability calibration and explanation uncertainty gating",
+        ],
+        keyResults: [
+          "Validated across BraTS, MSLesSeg, ADNI, and PULSE datasets",
+          "Delivered Oral Presentation at IEEE International Symposium on Biomedical Imaging (ISBI 2026)",
+        ],
+        whatWeLearned: [],
+      },
+      {
+        id: "phd-work-03",
+        number: "03",
+        slug: "normal-projection",
+        title: "Reliable Normal Projection with Healthy-Reference Calibration for Brain MRI Anomaly Localization",
+        category: "HEALTHY-ONLY MODELING",
+        progressionStage: "Healthy MRI only",
+        summary: "Removing the need for patient labels by learning normal anatomy from healthy MRI and identifying reliable deviations through normal projection, uncertainty estimation, and false-positive-controlled calibration.",
+        tags: ["Diffusion Models", "Normal Projection", "Anomaly Localization", "Uncertainty", "Calibration", "Healthy-only Modeling"],
+        route: "/phd/research/normal-projection",
+        publicationSlug: "reliable-normal-projection",
+        relatedResearchLabel: "Reliable Normal Projection",
+        problem: "Normal-only anomaly localization can generate visually convincing residual maps containing pathology-related change, anatomical variability, acquisition effects, preprocessing mismatch, or projection instability.",
+        whyItMatters: "The study provides a reliability-oriented protocol for evaluating normal-projection evidence under severe annotation scarcity without tuning thresholds on abnormal data.",
+        approach: [
+          "Healthy-reference calibration protocol establishing multi-view residual aggregation",
+          "False-positive-controlled evidence selection without tuning on abnormal data",
+          "Normal projection and uncertainty estimation via healthy-only modeling",
+        ],
+        keyResults: [
+          "BraTS Pixel-AUPRC: 0.61",
+          "MSLesSeg Pixel-AUPRC: 0.48",
+          "Healthy-test FPR: 0.047 at target alpha = 0.05",
+          "Target/control ROI enrichment: 3.10× (p < 0.05)",
+          "Accepted at European Conference on Computer Vision (ECCV 2026) Workshop MedFM-Bench",
+        ],
+        whatWeLearned: [],
+      },
+    ],
   },
 
   seo: {

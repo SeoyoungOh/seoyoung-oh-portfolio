@@ -31,6 +31,11 @@ export const Navbar: React.FC = () => {
     };
   }, [mobileMenuOpen]);
 
+  // Presentation mode should NOT display the normal portfolio header
+  if (location.pathname.startsWith('/phd/presentation')) {
+    return null;
+  }
+
   const navItems = [
     { label: 'Home', href: isHomePage ? '#hero' : '/' },
     { label: 'Approach', href: isHomePage ? '#core-working-process' : '/#core-working-process' },

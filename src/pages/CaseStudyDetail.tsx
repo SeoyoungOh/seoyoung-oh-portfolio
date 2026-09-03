@@ -23,6 +23,14 @@ export const CaseStudyDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
 
+  const study = portfolioData.caseStudies.find((c) => c.slug === slug);
+
+  useEffect(() => {
+    if (study) {
+      document.title = `${study.title} | Seoyoung Oh Portfolio`;
+    }
+  }, [study]);
+
   if (slug === 'weakly-supervised-localization') {
     return <WeaklySupervisedDetail />;
   }
@@ -34,14 +42,6 @@ export const CaseStudyDetail: React.FC = () => {
   if (slug === 'brainstem-segmentation') {
     return <BrainstemSegmentationDetail />;
   }
-
-  const study = portfolioData.caseStudies.find((c) => c.slug === slug);
-
-  useEffect(() => {
-    if (study) {
-      document.title = `${study.title} | Seoyoung Oh Portfolio`;
-    }
-  }, [study]);
 
   if (!study || study.visible === false) {
     return (
