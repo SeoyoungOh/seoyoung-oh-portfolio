@@ -8,14 +8,17 @@ interface ThankYouSlideProps {
 export const ThankYouSlide: React.FC<ThankYouSlideProps> = () => {
   return (
     <div className="flex flex-col justify-between h-full w-full select-none">
-      {/* Top row */}
-      <div className="flex items-center justify-between">
-        <span className="text-[11px] sm:text-xs font-bold tracking-widest text-[#9091DF] uppercase">
+      {/* Top row: Category tag & Institutional logos */}
+      <div className="flex items-center justify-between gap-4">
+        <span className="text-[11px] sm:text-xs font-bold tracking-widest text-[#9091DF] uppercase shrink-0">
           CLOSING
         </span>
-        <div className="flex items-center gap-2 px-3 py-1 rounded-lg border border-dashed border-[#D9DDEE] bg-[#FBFBFF] text-[#626A7C] text-[10px] font-mono">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#9091DF]/60" />
-          <span>Institutional Logo Area</span>
+        <div className="h-8 sm:h-9 md:h-10 flex items-center">
+          <img
+            src="/images/phd-defense/title/phd-defense-institution-logos.png"
+            alt="Institutional logos"
+            className="h-full w-auto max-w-[260px] sm:max-w-[320px] md:max-w-[360px] object-contain object-right"
+          />
         </div>
       </div>
 

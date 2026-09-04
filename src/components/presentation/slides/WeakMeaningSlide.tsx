@@ -42,7 +42,10 @@ export const WeakMeaningSlide: React.FC<WeakMeaningSlideProps> = () => {
         {/* ---------------------------------------------------------------------
             01 — DIAGNOSTIC LABELS CAN LOCALIZE
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-[#D9DDEE]/80">
               <span className="font-mono text-xs font-black text-[#6F69C9] px-2 py-0.5 rounded bg-[#D9D8F4]/40 border border-[#A7A3DE]/50">
@@ -72,7 +75,10 @@ export const WeakMeaningSlide: React.FC<WeakMeaningSlideProps> = () => {
         {/* ---------------------------------------------------------------------
             02 — RELIABILITY CHANGES WHAT WE TRUST
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border-2 border-[#6F69C9]/50 p-4 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border-2 border-[#6F69C9]/50 p-4 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-[#D9D8F4]">
               <span className="font-mono text-xs font-black text-[#6F69C9] px-2 py-0.5 rounded bg-[#D9D8F4]/50 border border-[#A7A3DE]/60">
@@ -103,7 +109,10 @@ export const WeakMeaningSlide: React.FC<WeakMeaningSlideProps> = () => {
         {/* ---------------------------------------------------------------------
             03 — EVIDENCE IS NOT PATHOLOGY
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-[#D9DDEE]/80">
               <span className="font-mono text-xs font-black text-[#74747D] px-2 py-0.5 rounded bg-[#FAFAFC] border border-[#D9DDEE]">

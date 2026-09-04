@@ -68,7 +68,7 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
         {/* ---------------------------------------------------------------------
             LEFT COLUMN: Weak Supervision (Lavender Accent)
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs">
+        <div className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs transition-all duration-150 hover:border-[#6F69C9]/50">
           {/* Column Header */}
           <div className="flex items-center justify-between pb-1.5 border-b border-[#D9DDEE]/80">
             <div>
@@ -87,7 +87,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
           {/* Aligned Rows */}
           <div className="space-y-1.5 my-1 flex-1 flex flex-col justify-between">
             {/* Row 1: Supervision */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#74747D] uppercase block mb-0.5">
                 SUPERVISION
               </span>
@@ -98,7 +101,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
             </div>
 
             {/* Row 2: Question */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#74747D] uppercase block mb-0.5">
                 QUESTION
               </span>
@@ -108,7 +114,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
             </div>
 
             {/* Row 3: Output */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#74747D] uppercase block mb-0.5">
                 OUTPUT
               </span>
@@ -118,7 +127,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
             </div>
 
             {/* Row 4: Strength */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5 flex items-center gap-1">
                 <CheckCircle2 className="w-2.5 h-2.5" /> MAIN STRENGTH
               </span>
@@ -128,7 +140,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
             </div>
 
             {/* Row 5: Limitation */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#74747D] uppercase block mb-0.5 flex items-center gap-1">
                 <AlertCircle className="w-2.5 h-2.5" /> MAIN LIMITATION
               </span>
@@ -142,7 +157,7 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
         {/* ---------------------------------------------------------------------
             RIGHT COLUMN: Healthy-Only Normal Projection (Mint/Lavender Accent)
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs">
+        <div className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs transition-all duration-150 hover:border-[#6F69C9]/50">
           {/* Column Header */}
           <div className="flex items-center justify-between pb-1.5 border-b border-[#D9DDEE]/80">
             <div>
@@ -161,7 +176,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
           {/* Aligned Rows */}
           <div className="space-y-1.5 my-1 flex-1 flex flex-col justify-between">
             {/* Row 1: Supervision */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#74747D] uppercase block mb-0.5">
                 SUPERVISION
               </span>
@@ -172,7 +190,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
             </div>
 
             {/* Row 2: Question */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#74747D] uppercase block mb-0.5">
                 QUESTION
               </span>
@@ -182,7 +203,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
             </div>
 
             {/* Row 3: Output */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10.5px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#74747D] uppercase block mb-0.5">
                 OUTPUT
               </span>
@@ -192,7 +216,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
             </div>
 
             {/* Row 4: Strength */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#24242A] uppercase block mb-0.5 flex items-center gap-1">
                 <CheckCircle2 className="w-2.5 h-2.5 text-[#24242A]" /> MAIN STRENGTH
               </span>
@@ -202,7 +229,10 @@ export const SynthesisComparisonSlide: React.FC<SynthesisComparisonSlideProps> =
             </div>
 
             {/* Row 5: Limitation */}
-            <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10px]">
+            <div
+              tabIndex={0}
+              className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]/80 text-[10px] transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+            >
               <span className="text-[8.5px] font-mono font-bold text-[#74747D] uppercase block mb-0.5 flex items-center gap-1">
                 <AlertCircle className="w-2.5 h-2.5" /> MAIN LIMITATION
               </span>

@@ -40,7 +40,10 @@ export const NormalDifferenceSlide: React.FC<NormalDifferenceSlideProps> = () =>
         {/* ---------------------------------------------------------------------
             STEP 1: Stochastic Healthy Projections
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-[#D9DDEE]/80">
               <span className="px-1.5 py-0.2 rounded bg-[#FAFAFC] border border-[#D9DDEE] text-[9px] font-mono font-bold text-[#74747D] uppercase">
@@ -90,7 +93,10 @@ export const NormalDifferenceSlide: React.FC<NormalDifferenceSlideProps> = () =>
         {/* ---------------------------------------------------------------------
             STEP 2: Deviation Evidence
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-[#D9DDEE]/80">
               <span className="px-1.5 py-0.2 rounded bg-[#FAFAFC] border border-[#D9DDEE] text-[9px] font-mono font-bold text-[#74747D] uppercase">
@@ -131,7 +137,10 @@ export const NormalDifferenceSlide: React.FC<NormalDifferenceSlideProps> = () =>
         {/* ---------------------------------------------------------------------
             STEP 3: Projection Uncertainty
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-[#D9DDEE]/80">
               <span className="px-1.5 py-0.2 rounded bg-[#FAFAFC] border border-[#D9DDEE] text-[9px] font-mono font-bold text-[#74747D] uppercase">
@@ -176,7 +185,10 @@ export const NormalDifferenceSlide: React.FC<NormalDifferenceSlideProps> = () =>
         {/* ---------------------------------------------------------------------
             STEP 4: Conservative Evidence (Featured with #6F69C9 Accent)
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border-2 border-[#6F69C9]/60 p-3 flex flex-col justify-between shadow-2xs relative">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border-2 border-[#6F69C9]/60 p-3 flex flex-col justify-between shadow-2xs relative transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-[#D9D8F4]">
               <span className="px-1.5 py-0.2 rounded bg-[#D9D8F4]/50 border border-[#A7A3DE]/70 text-[9px] font-mono font-bold text-[#6F69C9] uppercase">
@@ -233,7 +245,10 @@ export const NormalDifferenceSlide: React.FC<NormalDifferenceSlideProps> = () =>
         {/* ---------------------------------------------------------------------
             STEP 5: Healthy-Reference Calibration
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-[#D9DDEE]/80">
               <span className="px-1.5 py-0.2 rounded bg-[#FAFAFC] border border-[#D9DDEE] text-[9px] font-mono font-bold text-[#74747D] uppercase">

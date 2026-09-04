@@ -39,7 +39,10 @@ export const WeakLimitationsSlide: React.FC<WeakLimitationsSlideProps> = () => {
         {/* ---------------------------------------------------------------------
             LIMITATION 01: Classifier Dependence
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D9DDEE]/80">
               <span className="px-2 py-0.5 rounded bg-[#FAFAFC] border border-[#D9DDEE] text-[10px] font-mono font-bold text-[#74747D] tracking-wider uppercase">
@@ -69,7 +72,10 @@ export const WeakLimitationsSlide: React.FC<WeakLimitationsSlideProps> = () => {
         {/* ---------------------------------------------------------------------
             LIMITATION 02: Indirect Spatial Supervision
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D9DDEE]/80">
               <span className="px-2 py-0.5 rounded bg-[#FAFAFC] border border-[#D9DDEE] text-[10px] font-mono font-bold text-[#74747D] tracking-wider uppercase">
@@ -99,7 +105,10 @@ export const WeakLimitationsSlide: React.FC<WeakLimitationsSlideProps> = () => {
         {/* ---------------------------------------------------------------------
             LIMITATION 03: Evidence Is Not Pathology
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border border-[#D9DDEE] p-4 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D9DDEE]/80">
               <span className="px-2 py-0.5 rounded bg-[#FAFAFC] border border-[#D9DDEE] text-[10px] font-mono font-bold text-[#74747D] tracking-wider uppercase">
@@ -129,7 +138,10 @@ export const WeakLimitationsSlide: React.FC<WeakLimitationsSlideProps> = () => {
         {/* ---------------------------------------------------------------------
             LIMITATION 04: Patient Labels Are Still Required (Slightly more prominent)
         --------------------------------------------------------------------- */}
-        <div className="bg-white rounded-xl border-2 border-[#6F69C9]/50 p-4 flex flex-col justify-between shadow-2xs">
+        <div
+          tabIndex={0}
+          className="bg-white rounded-xl border-2 border-[#6F69C9]/50 p-4 flex flex-col justify-between shadow-2xs transition-all duration-150 cursor-default outline-hidden hover:border-[#6F69C9] focus:border-[#6F69C9] active:border-[#6F69C9] hover:bg-[#F8F7FD] focus:bg-[#F8F7FD] active:bg-[#F8F7FD] hover:-translate-y-0.5 hover:shadow-xs focus:-translate-y-0.5 focus:shadow-xs"
+        >
           <div>
             <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D9D8F4]">
               <span className="px-2 py-0.5 rounded bg-[#D9D8F4]/50 border border-[#A7A3DE]/60 text-[10px] font-mono font-bold text-[#6F69C9] tracking-wider uppercase">

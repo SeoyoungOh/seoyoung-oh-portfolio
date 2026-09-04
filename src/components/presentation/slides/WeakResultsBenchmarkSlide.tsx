@@ -62,16 +62,10 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
   // Tab 2 (Small-lesion) size bin selection
   const [sizeBin, setSizeBin] = useState<'small' | 'medium' | 'large'>('small');
 
-  // Tab 3 (Reliability) property detail selection
-  const [reliabilityProp, setReliabilityProp] = useState<'faithfulness' | 'stability' | 'alignment'>('faithfulness');
-
-  // Tab 4 (ROI) metric detail selection
-  const [roiMetricKey, setRoiMetricKey] = useState<'concentration' | 'hit' | 'fp'>('concentration');
-
   return (
-    <div className="flex flex-col justify-between h-full w-full select-none">
+    <div className="flex flex-col justify-between h-full w-full select-none overflow-hidden">
       {/* =========================================================================
-          TOP: Header Area (~10% height)
+          TOP: Header Area (~9% height)
       ========================================================================= */}
       <div className="shrink-0 mb-1">
         <div className="flex items-center justify-between pb-0.5">
@@ -95,9 +89,9 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
       </div>
 
       {/* =========================================================================
-          TOP INTERACTIVE NAVIGATION TABS + PERSISTENT SUMMARY STRIP (~14% height)
+          TOP INTERACTIVE NAVIGATION TABS + PERSISTENT SUMMARY STRIP (~13% height)
       ========================================================================= */}
-      <div className="shrink-0 mb-1.5 space-y-1">
+      <div className="shrink-0 mb-1 space-y-1">
         {/* Four Scientific Question Tabs */}
         <div className="grid grid-cols-4 gap-2">
           {TABS.map((tab) => {
@@ -134,7 +128,7 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                       {tab.label}
                     </span>
                   </div>
-                  <span className="text-[9px] text-[#74747D] block truncate mt-0.5">
+                  <span className="text-[8.5px] text-[#74747D] block truncate mt-0.5">
                     {tab.question}
                   </span>
                 </div>
@@ -148,7 +142,7 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
         </div>
 
         {/* Compact Persistent Summary Strip across all 4 states */}
-        <div className="px-2.5 py-1 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE] grid grid-cols-4 gap-2 text-[9.5px]">
+        <div className="px-2.5 py-0.5 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE] grid grid-cols-4 gap-2 text-[9px]">
           <div className="flex items-center gap-1 truncate">
             <span className="font-bold text-[#6F69C9]">OVERALL:</span>
             <span className="text-[#24242A] truncate">Better localization</span>
@@ -169,34 +163,35 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
       </div>
 
       {/* =========================================================================
-          MAIN DETAIL VIEWPORT (~64% height)
+          MAIN DETAIL VIEWPORT (~65% height)
           Fixed geometry container with subtle cross-fade transition
+          Slightly reduced padding to prevent overflow
       ========================================================================= */}
-      <div className="flex-1 min-h-0 bg-white rounded-xl border border-[#D9DDEE] p-3 shadow-2xs flex flex-col justify-between overflow-hidden">
+      <div className="flex-1 min-h-0 bg-white rounded-xl border border-[#D9DDEE] p-2.5 shadow-2xs flex flex-col justify-between overflow-hidden">
         {/* =====================================================================
             STATE 01: OVERALL LOCALIZATION
         ===================================================================== */}
         {activeTabKey === 'overall' && (
           <div className="grid grid-cols-12 gap-3 h-full items-stretch animate-fadeIn">
             {/* Left 6 cols: 3-Level Scientific Interpretation */}
-            <div className="col-span-6 flex flex-col justify-between gap-1.5">
+            <div className="col-span-6 flex flex-col justify-between gap-1 h-full">
               <div>
-                <span className="text-[9.5px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5">
+                <span className="text-[9px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5">
                   QUESTION 01 · VISIBLE-LESION BENCHMARKS
                 </span>
-                <h3 className="text-sm font-black text-[#24242A] leading-tight mb-1.5">
+                <h3 className="text-xs sm:text-sm font-black text-[#24242A] leading-tight mb-1">
                   Overall weak localization improves across visible-lesion benchmarks
                 </h3>
 
                 {/* Level 1: Quantitative Summary (BraTS & MSLesSeg side by side) */}
-                <div className="grid grid-cols-2 gap-2 mb-1.5">
+                <div className="grid grid-cols-2 gap-1.5 mb-1">
                   {/* BraTS Card */}
-                  <div className="p-2 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]">
-                    <div className="flex items-center justify-between mb-1 pb-0.5 border-b border-[#D9DDEE]">
-                      <span className="text-[10px] font-bold text-[#24242A]">BraTS (Glioma)</span>
-                      <span className="text-[8.5px] font-mono text-[#74747D]">Large lesions</span>
+                  <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]">
+                    <div className="flex items-center justify-between mb-0.5 pb-0.5 border-b border-[#D9DDEE]">
+                      <span className="text-[9.5px] font-bold text-[#24242A]">BraTS (Glioma)</span>
+                      <span className="text-[8px] font-mono text-[#74747D]">Large lesions</span>
                     </div>
-                    <div className="space-y-1 text-[10px]">
+                    <div className="space-y-0.5 text-[9.5px]">
                       <div className="flex items-center justify-between">
                         <span className="text-[#74747D]">Max-IoU</span>
                         <span className="font-mono text-[#24242A]">0.35 → <strong className="text-[#6F69C9]">0.39</strong></span>
@@ -205,24 +200,24 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                         <span className="text-[#74747D]">Pixel AUPRC</span>
                         <span className="font-mono text-[#24242A]">0.29 → <strong className="text-[#6F69C9]">0.33</strong></span>
                       </div>
-                      <div className="flex items-center justify-between p-1 rounded bg-[#D9D8F4]/30 border border-[#A7A3DE]/50">
+                      <div className="flex items-center justify-between p-0.5 rounded bg-[#D9D8F4]/30 border border-[#A7A3DE]/50">
                         <span className="font-bold text-[#24242A]">Recall@10</span>
                         <div className="flex items-center gap-1 font-mono">
                           <span className="text-[#74747D]">0.70 →</span>
-                          <span className="text-xs font-black text-[#6F69C9]">0.77</span>
-                          <span className="text-[8.5px] text-[#6F69C9] font-bold">(+0.07)</span>
+                          <span className="text-[11px] font-black text-[#6F69C9]">0.77</span>
+                          <span className="text-[8px] text-[#6F69C9] font-bold">(+0.07)</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* MSLesSeg Card */}
-                  <div className="p-2 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]">
-                    <div className="flex items-center justify-between mb-1 pb-0.5 border-b border-[#D9DDEE]">
-                      <span className="text-[10px] font-bold text-[#24242A]">MSLesSeg (MS)</span>
-                      <span className="text-[8.5px] font-mono text-[#74747D]">Multiple lesions</span>
+                  <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE]">
+                    <div className="flex items-center justify-between mb-0.5 pb-0.5 border-b border-[#D9DDEE]">
+                      <span className="text-[9.5px] font-bold text-[#24242A]">MSLesSeg (MS)</span>
+                      <span className="text-[8px] font-mono text-[#74747D]">Multiple lesions</span>
                     </div>
-                    <div className="space-y-1 text-[10px]">
+                    <div className="space-y-0.5 text-[9.5px]">
                       <div className="flex items-center justify-between">
                         <span className="text-[#74747D]">Max-IoU</span>
                         <span className="font-mono text-[#24242A]">0.24 → <strong className="text-[#6F69C9]">0.28</strong></span>
@@ -231,12 +226,12 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                         <span className="text-[#74747D]">Pixel AUPRC</span>
                         <span className="font-mono text-[#24242A]">0.18 → <strong className="text-[#6F69C9]">0.22</strong></span>
                       </div>
-                      <div className="flex items-center justify-between p-1 rounded bg-[#D9D8F4]/30 border border-[#A7A3DE]/50">
+                      <div className="flex items-center justify-between p-0.5 rounded bg-[#D9D8F4]/30 border border-[#A7A3DE]/50">
                         <span className="font-bold text-[#24242A]">Recall@10</span>
                         <div className="flex items-center gap-1 font-mono">
                           <span className="text-[#74747D]">0.56 →</span>
-                          <span className="text-xs font-black text-[#6F69C9]">0.65</span>
-                          <span className="text-[8.5px] text-[#6F69C9] font-bold">(+0.09)</span>
+                          <span className="text-[11px] font-black text-[#6F69C9]">0.65</span>
+                          <span className="text-[8px] text-[#6F69C9] font-bold">(+0.09)</span>
                         </div>
                       </div>
                     </div>
@@ -244,16 +239,16 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                 </div>
 
                 {/* Level 2: Metric Meaning (Interactive selector) */}
-                <div className="p-2 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE]">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[9px] font-mono font-bold text-[#626A7C] uppercase">
+                <div className="p-1.5 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE] mb-1">
+                  <div className="flex items-center justify-between mb-0.5">
+                    <span className="text-[8.5px] font-mono font-bold text-[#626A7C] uppercase">
                       METRIC MEANING · SELECT TO INSPECT
                     </span>
                     <div className="flex items-center gap-1">
                       <button
                         type="button"
                         onClick={() => setOverallMetricKey('recall10')}
-                        className={`px-1.5 py-0.2 rounded text-[9px] font-mono font-bold ${
+                        className={`px-1.5 py-0.2 rounded text-[8px] font-mono font-bold ${
                           overallMetricKey === 'recall10'
                             ? 'bg-[#6F69C9] text-white'
                             : 'bg-white text-[#626A7C] border border-[#D9DDEE]'
@@ -264,7 +259,7 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                       <button
                         type="button"
                         onClick={() => setOverallMetricKey('maxiou')}
-                        className={`px-1.5 py-0.2 rounded text-[9px] font-mono ${
+                        className={`px-1.5 py-0.2 rounded text-[8px] font-mono ${
                           overallMetricKey === 'maxiou'
                             ? 'bg-[#6F69C9] text-white font-bold'
                             : 'bg-white text-[#626A7C] border border-[#D9DDEE]'
@@ -275,7 +270,7 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                       <button
                         type="button"
                         onClick={() => setOverallMetricKey('auprc')}
-                        className={`px-1.5 py-0.2 rounded text-[9px] font-mono ${
+                        className={`px-1.5 py-0.2 rounded text-[8px] font-mono ${
                           overallMetricKey === 'auprc'
                             ? 'bg-[#6F69C9] text-white font-bold'
                             : 'bg-white text-[#626A7C] border border-[#D9DDEE]'
@@ -287,20 +282,20 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                   </div>
 
                   {overallMetricKey === 'recall10' && (
-                    <div className="text-[10px] text-[#24242A] leading-snug">
-                      <p className="font-semibold text-[#6F69C9] mb-0.5">
+                    <div className="text-[9px] text-[#24242A] leading-snug">
+                      <p className="font-semibold text-[#6F69C9] mb-0.2">
                         Proposal-retrieval metric (NOT top 10% of voxels):
                       </p>
                       <p className="text-[#626A7C]">
-                        Fraction of reference lesion components retrieved by at least one of the top-10 ranked candidate regions.
-                        Higher Recall@10 confirms weak evidence is more useful for retrieving true abnormal candidates.
+                        Fraction of reference lesion components retrieved by at least one of the top-10 candidate regions.
+                        Confirms weak evidence reliably retrieves true abnormal targets.
                       </p>
                     </div>
                   )}
 
                   {overallMetricKey === 'maxiou' && (
-                    <div className="text-[10px] text-[#24242A] leading-snug">
-                      <p className="font-semibold text-[#24242A] mb-0.5">
+                    <div className="text-[9px] text-[#24242A] leading-snug">
+                      <p className="font-semibold text-[#24242A] mb-0.2">
                         Best spatial overlap across threshold sweep:
                       </p>
                       <p className="text-[#626A7C]">
@@ -310,8 +305,8 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                   )}
 
                   {overallMetricKey === 'auprc' && (
-                    <div className="text-[10px] text-[#24242A] leading-snug">
-                      <p className="font-semibold text-[#24242A] mb-0.5">
+                    <div className="text-[9px] text-[#24242A] leading-snug">
+                      <p className="font-semibold text-[#24242A] mb-0.2">
                         Continuous evidence ranking under class imbalance:
                       </p>
                       <p className="text-[#626A7C]">
@@ -323,24 +318,24 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
               </div>
 
               {/* Level 3: Why It Matters */}
-              <div className="p-2 rounded-lg bg-[#FAFAFC] border-l-3 border-l-[#6F69C9] border border-[#D9DDEE]">
-                <p className="text-[10.5px] text-[#24242A] leading-tight font-medium">
+              <div className="p-1.5 rounded-lg bg-[#FAFAFC] border-l-3 border-l-[#6F69C9] border border-[#D9DDEE]">
+                <p className="text-[9.5px] text-[#24242A] leading-tight font-medium">
                   The improvement is consistent across both a large, coherent abnormality setting and a smaller, fragmented lesion setting.
                 </p>
-                <p className="text-[9.5px] text-[#626A7C] leading-tight mt-0.5">
-                  Importantly, lesion masks were used only for test-time evaluation — training still relied on{' '}
+                <p className="text-[8.5px] text-[#626A7C] leading-tight mt-0.5">
+                  Importantly, lesion masks were used only for test-time evaluation — training relied on{' '}
                   <span className="font-bold text-[#6F69C9]">diagnostic labels only</span>.
                 </p>
               </div>
             </div>
 
             {/* Right 6 cols: Scientific Figure */}
-            <div className="col-span-6 bg-white rounded-xl border border-[#D9DDEE] p-2 flex flex-col justify-between shadow-2xs">
-              <div className="flex items-center justify-between pb-1 border-b border-[#D9DDEE]/80 shrink-0">
-                <span className="text-[9.5px] font-mono font-bold text-[#6F69C9] uppercase">
+            <div className="col-span-6 bg-white rounded-xl border border-[#D9DDEE] p-1.5 flex flex-col justify-between shadow-2xs h-full">
+              <div className="flex items-center justify-between pb-0.5 border-b border-[#D9DDEE]/80 shrink-0">
+                <span className="text-[9px] font-mono font-bold text-[#6F69C9] uppercase">
                   BENCHMARK VISUALIZATION · BRATS & MSLESSEG
                 </span>
-                <span className="text-[8.5px] font-mono text-[#74747D]">
+                <span className="text-[8px] font-mono text-[#74747D]">
                   CLICK IMAGE TO ENLARGE
                 </span>
               </div>
@@ -370,7 +365,7 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                     });
                   }
                 }}
-                className="flex-1 min-h-0 relative flex items-center justify-center p-1 bg-white overflow-hidden group cursor-zoom-in rounded-lg"
+                className="flex-1 min-h-0 relative flex items-center justify-center p-1 bg-white overflow-hidden group cursor-zoom-in rounded-lg max-h-[175px]"
               >
                 <img
                   src="/images/phd-defense/weak/thesis-weak-results-overall.png"
@@ -380,9 +375,9 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                 <ZoomIndicatorBadge />
               </div>
 
-              <div className="pt-1 border-t border-[#D9DDEE]/80 flex items-center justify-between shrink-0 text-[9.5px] text-[#626A7C]">
+              <div className="pt-0.5 border-t border-[#D9DDEE]/80 flex items-center justify-between shrink-0 text-[9px] text-[#626A7C]">
                 <span>Figure: Overall localization performance on visible-lesion benchmarks.</span>
-                <span className="font-mono text-[8.5px] text-[#74747D]">Thesis Ch. 6</span>
+                <span className="font-mono text-[8px] text-[#74747D]">Thesis Ch. 6</span>
               </div>
             </div>
           </div>
@@ -394,19 +389,19 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
         {activeTabKey === 'small-lesion' && (
           <div className="grid grid-cols-12 gap-3 h-full items-stretch animate-fadeIn">
             {/* Left 6 cols: 3-Level Scientific Interpretation */}
-            <div className="col-span-6 flex flex-col justify-between gap-1.5">
+            <div className="col-span-6 flex flex-col justify-between gap-1 h-full">
               <div>
-                <span className="text-[9.5px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5">
+                <span className="text-[9px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5">
                   QUESTION 02 · LESION SIZE STRATIFICATION
                 </span>
-                <h3 className="text-sm font-black text-[#24242A] leading-tight mb-1.5">
+                <h3 className="text-xs sm:text-sm font-black text-[#24242A] leading-tight mb-1">
                   The largest challenge is small and sparse evidence
                 </h3>
 
                 {/* Level 1: Size Progression Cards with focus on Small */}
-                <div className="p-2 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE] mb-1.5">
-                  <div className="flex items-center justify-between mb-1 pb-0.5 border-b border-[#D9DDEE]">
-                    <span className="text-[9.5px] font-mono font-bold text-[#24242A]">
+                <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE] mb-1">
+                  <div className="flex items-center justify-between mb-0.5 pb-0.5 border-b border-[#D9DDEE]">
+                    <span className="text-[9px] font-mono font-bold text-[#24242A]">
                       RECALL@10 STRATIFIED BY LESION SIZE
                     </span>
                     <div className="flex items-center gap-1">
@@ -415,7 +410,7 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                           key={bin}
                           type="button"
                           onClick={() => setSizeBin(bin)}
-                          className={`px-1.5 py-0.2 rounded text-[8.5px] font-mono uppercase ${
+                          className={`px-1.5 py-0.2 rounded text-[8px] font-mono uppercase ${
                             sizeBin === bin
                               ? 'bg-[#6F69C9] text-white font-bold'
                               : 'bg-white text-[#74747D] border border-[#D9DDEE]'
@@ -428,65 +423,62 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                   </div>
 
                   {/* Primary Focus: Small lesions */}
-                  <div className="grid grid-cols-2 gap-2 text-[10px]">
-                    <div className="p-1.5 rounded-md bg-[#D9D8F4]/30 border border-[#A7A3DE]/60">
-                      <span className="text-[9px] font-bold text-[#6F69C9] block">BraTS Small Lesions</span>
+                  <div className="grid grid-cols-2 gap-1.5 text-[9.5px]">
+                    <div className="p-1 rounded-md bg-[#D9D8F4]/30 border border-[#A7A3DE]/60">
+                      <span className="text-[8.5px] font-bold text-[#6F69C9] block">BraTS Small Lesions</span>
                       <div className="flex items-baseline justify-between mt-0.5 font-mono">
                         <span className="text-[#74747D]">0.50 →</span>
-                        <span className="text-sm font-black text-[#6F69C9]">0.58</span>
-                        <span className="text-[9px] font-bold text-[#6F69C9]">+0.08</span>
+                        <span className="text-xs font-black text-[#6F69C9]">0.58</span>
+                        <span className="text-[8.5px] font-bold text-[#6F69C9]">+0.08</span>
                       </div>
-                      <span className="text-[8.5px] text-[#74747D] block mt-0.5">Med: 0.78 · Lrg: 0.87</span>
+                      <span className="text-[8px] text-[#74747D] block mt-0.5">Med: 0.78 · Lrg: 0.87</span>
                     </div>
 
-                    <div className="p-1.5 rounded-md bg-[#D9D8F4]/30 border border-[#A7A3DE]/60">
-                      <span className="text-[9px] font-bold text-[#6F69C9] block">MSLesSeg Small Lesions</span>
+                    <div className="p-1 rounded-md bg-[#D9D8F4]/30 border border-[#A7A3DE]/60">
+                      <span className="text-[8.5px] font-bold text-[#6F69C9] block">MSLesSeg Small Lesions</span>
                       <div className="flex items-baseline justify-between mt-0.5 font-mono">
                         <span className="text-[#74747D]">0.45 →</span>
-                        <span className="text-sm font-black text-[#6F69C9]">0.54</span>
-                        <span className="text-[9px] font-bold text-[#6F69C9]">+0.09</span>
+                        <span className="text-xs font-black text-[#6F69C9]">0.54</span>
+                        <span className="text-[8.5px] font-bold text-[#6F69C9]">+0.09</span>
                       </div>
-                      <span className="text-[8.5px] text-[#74747D] block mt-0.5">Med: 0.68 · Lrg: 0.78</span>
+                      <span className="text-[8px] text-[#74747D] block mt-0.5">Med: 0.68 · Lrg: 0.78</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Level 2: What Does This Mean? */}
-                <div className="p-2 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE] mb-1.5 text-[10px] text-[#24242A] leading-snug">
+                <div className="p-1.5 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE] mb-1 text-[9.5px] text-[#24242A] leading-snug">
                   <p className="font-bold text-[#24242A] mb-0.5">
                     Small lesions are the strictest test of weak localization:
                   </p>
                   <p className="text-[#626A7C]">
-                    Large abnormalities may still be retrieved by broad or diffuse maps. Small abnormalities require the highest-ranked evidence to be spatially precise and sensitive.
-                    Better small-lesion Recall@10 means calibration helps retain compact evidence that would otherwise be lost.
+                    Large abnormalities may still be retrieved by broad maps. Small abnormalities require the highest-ranked evidence to be spatially precise. Better small-lesion Recall@10 confirms calibration retains compact targets.
                   </p>
                 </div>
               </div>
 
-              {/* Level 3: Scientific Connection to ALS Brainstem Problem */}
-              <div className="p-2 rounded-lg bg-[#FAFAFC] border-l-3 border-l-[#6F69C9] border border-[#D9DDEE]">
-                <div className="flex items-center gap-1 mb-0.5">
-                  <span className="text-[9.5px] font-mono font-bold text-[#6F69C9] uppercase">
-                    Why this matters for ALS brainstem analysis:
-                  </span>
-                </div>
-                <p className="text-[10px] text-[#24242A] leading-snug font-medium">
-                  ALS-relevant brainstem nuclei and pathways are small, and expected MRI evidence may be subtle and spatially compact.
+              {/* Level 3: Shortened ALS relevance block per exact user request */}
+              <div className="p-1.5 rounded-lg bg-[#FAFAFC] border-l-3 border-l-[#6F69C9] border border-[#D9DDEE]">
+                <span className="text-[9px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5">
+                  WHY THIS MATTERS FOR ALS
+                </span>
+                <p className="text-[9.5px] text-[#24242A] leading-snug font-medium">
+                  ALS-relevant brainstem nuclei and pathways are small; small-lesion retrieval is therefore a useful methodological stress test.
                 </p>
-                <div className="mt-1 flex items-center gap-1.5 text-[9px] text-[#74747D] font-mono">
-                  <span className="font-bold text-[#6F69C9]">Scientific Caution:</span>
-                  <span>Relative methodological proxy — not direct validation of ALS nuclei (MS lesions ≠ brainstem nuclei).</span>
+                <div className="mt-1 flex items-center gap-1 text-[8.5px] text-[#74747D] font-mono">
+                  <span className="font-bold text-[#6F69C9]">Caution:</span>
+                  <span>Methodological proxy — not direct ALS nuclei validation.</span>
                 </div>
               </div>
             </div>
 
             {/* Right 6 cols: Scientific Figure */}
-            <div className="col-span-6 bg-white rounded-xl border border-[#D9DDEE] p-2 flex flex-col justify-between shadow-2xs">
-              <div className="flex items-center justify-between pb-1 border-b border-[#D9DDEE]/80 shrink-0">
-                <span className="text-[9.5px] font-mono font-bold text-[#6F69C9] uppercase">
+            <div className="col-span-6 bg-white rounded-xl border border-[#D9DDEE] p-1.5 flex flex-col justify-between shadow-2xs h-full">
+              <div className="flex items-center justify-between pb-0.5 border-b border-[#D9DDEE]/80 shrink-0">
+                <span className="text-[9px] font-mono font-bold text-[#6F69C9] uppercase">
                   SIZE-STRATIFIED RETRIEVAL · RECALL@10
                 </span>
-                <span className="text-[8.5px] font-mono text-[#74747D]">
+                <span className="text-[8px] font-mono text-[#74747D]">
                   CLICK IMAGE TO ENLARGE
                 </span>
               </div>
@@ -516,7 +508,7 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                     });
                   }
                 }}
-                className="flex-1 min-h-0 relative flex items-center justify-center p-1 bg-white overflow-hidden group cursor-zoom-in rounded-lg"
+                className="flex-1 min-h-0 relative flex items-center justify-center p-1 bg-white overflow-hidden group cursor-zoom-in rounded-lg max-h-[175px]"
               >
                 <img
                   src="/images/phd-defense/weak/thesis-weak-results-small-lesions.png"
@@ -526,128 +518,181 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
                 <ZoomIndicatorBadge />
               </div>
 
-              <div className="pt-1 border-t border-[#D9DDEE]/80 flex items-center justify-between shrink-0 text-[9.5px] text-[#626A7C]">
+              <div className="pt-0.5 border-t border-[#D9DDEE]/80 flex items-center justify-between shrink-0 text-[9px] text-[#626A7C]">
                 <span>Figure: Recall@10 stratified across lesion size bins.</span>
-                <span className="font-mono text-[8.5px] text-[#74747D]">Thesis Ch. 6</span>
+                <span className="font-mono text-[8px] text-[#74747D]">Thesis Ch. 6</span>
               </div>
             </div>
           </div>
         )}
 
         {/* =====================================================================
-            STATE 03: RELIABILITY VALIDITY (HTML/CSS Diagram)
+            STATE 03: RELIABILITY VALIDITY (Table 6.6 Quantitative Summary)
         ===================================================================== */}
         {activeTabKey === 'reliability' && (
-          <div className="flex flex-col justify-between h-full gap-2 animate-fadeIn">
+          <div className="flex flex-col justify-between h-full gap-1 animate-fadeIn">
             <div>
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-[9.5px] font-mono font-bold text-[#6F69C9] uppercase">
-                  QUESTION 03 · UNCERTAINTY VS. EVIDENCE QUALITY
+              {/* Header & Sub-label */}
+              <div className="flex items-center justify-between mb-0.5">
+                <span className="text-[9px] font-mono font-bold text-[#6F69C9] uppercase">
+                  QUESTION 03 · UNCERTAINTY VS. EVIDENCE QUALITY (THESIS TABLE 6.6)
                 </span>
-                <span className="text-[9px] font-mono text-[#74747D]">
-                  Systematic stratification of evidence by uncertainty
+                <span className="px-2 py-0.5 rounded bg-[#FAFAFC] border border-[#D9DDEE] text-[8.5px] font-mono text-[#626A7C]">
+                  <strong className="text-[#6F69C9]">High rel. (low uncert.)</strong> vs. <span className="text-[#74747D]">Low rel. (high uncert.)</span>
                 </span>
               </div>
-              <h3 className="text-sm font-black text-[#24242A] leading-tight mb-2">
-                Does low uncertainty actually mean more trustworthy evidence?
+              <h3 className="text-xs sm:text-sm font-black text-[#24242A] leading-tight mb-1.5">
+                Does low uncertainty actually identify more trustworthy evidence?
               </h3>
 
-              {/* Three Groups Diagram (Left to Right) */}
-              <div className="grid grid-cols-3 gap-2.5 mb-2">
-                {/* High Reliability */}
-                <div className="p-2 rounded-xl bg-white border-2 border-[#6F69C9] shadow-2xs text-center">
-                  <span className="text-[9px] font-mono font-bold text-[#6F69C9] block mb-0.5">
-                    TIER 1
-                  </span>
-                  <h4 className="text-xs font-black text-[#24242A]">HIGH RELIABILITY</h4>
-                  <span className="px-1.5 py-0.2 rounded bg-[#D9D8F4]/50 text-[8.5px] font-mono font-bold text-[#6F69C9] inline-block mt-0.5">
-                    Low uncertainty
-                  </span>
-                  <div className="mt-2 py-1 px-1.5 rounded bg-[#FAFAFC] text-[9.5px] font-mono text-[#24242A] border border-[#D9DDEE]">
-                    Highest faithfulness & stability
+              {/* Three Compact Quantitative Comparison Cards */}
+              <div className="grid grid-cols-3 gap-2 mb-1.5">
+                {/* 1. BraTS Card */}
+                <div className="p-2 rounded-xl bg-[#FAFAFC] border border-[#D9DDEE] shadow-2xs flex flex-col justify-between">
+                  <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#D9DDEE]">
+                    <span className="text-[10.5px] font-black text-[#24242A]">BraTS</span>
+                    <span className="text-[8px] font-mono text-[#74747D]">Glioma Benchmark</span>
+                  </div>
+
+                  <div className="space-y-1 font-mono text-[9.5px]">
+                    <div className="flex items-center justify-between p-1 rounded bg-white border border-[#D9DDEE]">
+                      <span className="text-[#626A7C] font-sans font-medium text-[9px]">Deletion AUC</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-[#6F69C9]">0.43</span>
+                        <span className="text-[#74747D] text-[8px]">vs</span>
+                        <span className="text-[#74747D]">0.19</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-1 rounded bg-white border border-[#D9DDEE]">
+                      <span className="text-[#626A7C] font-sans font-medium text-[9px]">Stability</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-[#6F69C9]">0.88</span>
+                        <span className="text-[#74747D] text-[8px]">vs</span>
+                        <span className="text-[#74747D]">0.57</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-1 rounded bg-white border border-[#D9DDEE]">
+                      <span className="text-[#626A7C] font-sans font-medium text-[9px]">Spatial alignment</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-[#6F69C9]">0.55</span>
+                        <span className="text-[#74747D] text-[8px]">vs</span>
+                        <span className="text-[#74747D]">0.22</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Medium Reliability */}
-                <div className="p-2 rounded-xl bg-[#FAFAFC] border border-[#D9DDEE] shadow-2xs text-center">
-                  <span className="text-[9px] font-mono font-bold text-[#74747D] block mb-0.5">
-                    TIER 2
-                  </span>
-                  <h4 className="text-xs font-bold text-[#24242A]">MEDIUM RELIABILITY</h4>
-                  <span className="px-1.5 py-0.2 rounded bg-white text-[8.5px] font-mono text-[#74747D] border border-[#D9DDEE] inline-block mt-0.5">
-                    Intermediate uncertainty
-                  </span>
-                  <div className="mt-2 py-1 px-1.5 rounded bg-white text-[9.5px] font-mono text-[#626A7C] border border-[#D9DDEE]">
-                    Moderate noise vulnerability
+                {/* 2. MSLesSeg Card */}
+                <div className="p-2 rounded-xl bg-[#FAFAFC] border border-[#D9DDEE] shadow-2xs flex flex-col justify-between">
+                  <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#D9DDEE]">
+                    <span className="text-[10.5px] font-black text-[#24242A]">MSLesSeg</span>
+                    <span className="text-[8px] font-mono text-[#74747D]">MS Benchmark</span>
+                  </div>
+
+                  <div className="space-y-1 font-mono text-[9.5px]">
+                    <div className="flex items-center justify-between p-1 rounded bg-white border border-[#D9DDEE]">
+                      <span className="text-[#626A7C] font-sans font-medium text-[9px]">Deletion AUC</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-[#6F69C9]">0.32</span>
+                        <span className="text-[#74747D] text-[8px]">vs</span>
+                        <span className="text-[#74747D]">0.13</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-1 rounded bg-white border border-[#D9DDEE]">
+                      <span className="text-[#626A7C] font-sans font-medium text-[9px]">Stability</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-[#6F69C9]">0.84</span>
+                        <span className="text-[#74747D] text-[8px]">vs</span>
+                        <span className="text-[#74747D]">0.43</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-1 rounded bg-white border border-[#D9DDEE]">
+                      <span className="text-[#626A7C] font-sans font-medium text-[9px]">Spatial alignment</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-[#6F69C9]">0.38</span>
+                        <span className="text-[#74747D] text-[8px]">vs</span>
+                        <span className="text-[#74747D]">0.14</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Low Reliability */}
-                <div className="p-2 rounded-xl bg-[#FAFAFC] border border-[#D9DDEE] shadow-2xs text-center opacity-80">
-                  <span className="text-[9px] font-mono font-bold text-[#74747D] block mb-0.5">
-                    TIER 3
-                  </span>
-                  <h4 className="text-xs font-bold text-[#74747D]">LOW RELIABILITY</h4>
-                  <span className="px-1.5 py-0.2 rounded bg-white text-[8.5px] font-mono text-[#74747D] border border-[#D9DDEE] inline-block mt-0.5">
-                    High uncertainty
-                  </span>
-                  <div className="mt-2 py-1 px-1.5 rounded bg-white text-[9.5px] font-mono text-[#74747D] border border-[#D9DDEE]">
-                    Spurious & unstable activations
+                {/* 3. Mask-Free Settings Card */}
+                <div className="p-2 rounded-xl bg-[#FAFAFC] border border-[#D9DDEE] shadow-2xs flex flex-col justify-between">
+                  <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#D9DDEE]">
+                    <span className="text-[10.5px] font-black text-[#24242A]">MASK-FREE SETTINGS</span>
+                    <span className="text-[8px] font-mono text-[#6F69C9] font-bold">Spatial Alignment Trend</span>
+                  </div>
+
+                  <div className="space-y-1 font-mono text-[9.5px]">
+                    <div className="p-1 rounded bg-white border border-[#D9DDEE]">
+                      <div className="flex items-center justify-between text-[#626A7C] font-sans font-medium text-[9px] mb-0.5">
+                        <span>ADNI (Hippocampus)</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[8.5px] text-[#74747D] font-sans">Target ROI Alignment</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-bold text-[#6F69C9]">0.49</span>
+                          <span className="text-[#74747D] text-[8px]">vs</span>
+                          <span className="text-[#74747D]">0.21</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-1 rounded bg-white border border-[#D9DDEE]">
+                      <div className="flex items-center justify-between text-[#626A7C] font-sans font-medium text-[9px] mb-0.5">
+                        <span>PULSE (ALS Brainstem)</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[8.5px] text-[#74747D] font-sans">Target ROI Alignment</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-bold text-[#6F69C9]">0.43</span>
+                          <span className="text-[#74747D] text-[8px]">vs</span>
+                          <span className="text-[#74747D]">0.16</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-1 rounded bg-[#D9D8F4]/30 border border-[#A7A3DE]/50 text-[8.5px] font-sans text-[#24242A] text-center">
+                      Higher concentration in disease-relevant ROIs
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Clear Monotonic Trend Across Four Evaluation Properties */}
-              <div className="p-2 rounded-xl bg-[#F4F5FB] border border-[#D9DDEE] mb-2">
-                <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-[#D9DDEE]">
-                  <span className="text-[9.5px] font-mono font-bold text-[#24242A]">
-                    EVALUATION PROPERTIES · OBSERVED TREND: HIGH {'>'} MEDIUM {'>'} LOW RELIABILITY
-                  </span>
-                  <span className="text-[9px] font-mono text-[#6F69C9] font-bold">
-                    Statistically consistent gradient
-                  </span>
+              {/* Brief Metric Meanings */}
+              <div className="p-1.5 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE] grid grid-cols-3 gap-2 text-[9px] mb-1">
+                <div>
+                  <span className="font-bold text-[#24242A] block text-[9px]">Deletion AUC:</span>
+                  <span className="text-[#626A7C] leading-tight">Does removing the evidence reduce classifier confidence?</span>
                 </div>
-
-                <div className="grid grid-cols-4 gap-2 text-[10px]">
-                  <div className="p-1.5 rounded-lg bg-white border border-[#D9DDEE]">
-                    <span className="font-bold text-[#24242A] block text-[9.5px] mb-0.5">1. Decision Faithfulness</span>
-                    <p className="text-[9px] text-[#626A7C] leading-tight">
-                      Removing low-uncertainty evidence sharply reduces classifier score; keeping only it preserves confidence.
-                    </p>
-                  </div>
-
-                  <div className="p-1.5 rounded-lg bg-white border border-[#D9DDEE]">
-                    <span className="font-bold text-[#24242A] block text-[9.5px] mb-0.5">2. Perturbation Stability</span>
-                    <p className="text-[9px] text-[#626A7C] leading-tight">
-                      Reliable evidence stays spatially invariant under minor input perturbations and scan variations.
-                    </p>
-                  </div>
-
-                  <div className="p-1.5 rounded-lg bg-white border border-[#D9DDEE]">
-                    <span className="font-bold text-[#24242A] block text-[9.5px] mb-0.5">3. Spatial Alignment</span>
-                    <p className="text-[9px] text-[#626A7C] leading-tight">
-                      Aligns significantly closer to reference lesion masks or target anatomical ROIs.
-                    </p>
-                  </div>
-
-                  <div className="p-1.5 rounded-lg bg-white border border-[#D9DDEE]">
-                    <span className="font-bold text-[#24242A] block text-[9.5px] mb-0.5">4. Evidence Consistency</span>
-                    <p className="text-[9px] text-[#626A7C] leading-tight">
-                      Shows high inter-cue agreement between attention, gradients, and rollout signals.
-                    </p>
-                  </div>
+                <div>
+                  <span className="font-bold text-[#24242A] block text-[9px]">Stability:</span>
+                  <span className="text-[#626A7C] leading-tight">Does the same evidence remain under small perturbations?</span>
+                </div>
+                <div>
+                  <span className="font-bold text-[#24242A] block text-[9px]">Spatial alignment:</span>
+                  <span className="text-[#626A7C] leading-tight">Does the evidence fall in lesion masks or disease-relevant ROIs?</span>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Interpretation */}
-            <div className="p-2 rounded-lg bg-[#FAFAFC] border-l-3 border-l-[#6F69C9] border border-[#D9DDEE]">
-              <p className="text-[10.5px] text-[#24242A] font-bold leading-tight">
-                Uncertainty is useful only if it predicts evidence quality.
-              </p>
-              <p className="text-[9.5px] text-[#626A7C] leading-tight mt-0.5">
-                The thesis shows that low-uncertainty evidence is more faithful, more stable, and more spatially aligned than high-uncertainty evidence. Reliability is therefore an operational criterion, not merely an auxiliary heatmap.
-              </p>
+            {/* Bottom Interpretation & Takeaway */}
+            <div className="space-y-1">
+              <div className="p-1.5 rounded-lg bg-[#FAFAFC] border-l-3 border-l-[#6F69C9] border border-[#D9DDEE] text-[9.5px]">
+                <p className="text-[#24242A] leading-tight font-medium">
+                  Lower uncertainty consistently corresponds to evidence that is more decision-faithful, more stable, and better spatially aligned.
+                </p>
+              </div>
+
+              <div className="p-1.5 rounded-lg bg-white border border-[#D9D8F4] text-[9.5px] text-center">
+                <span className="font-bold text-[#24242A]">The uncertainty estimate is informative: </span>
+                <span className="text-[#626A7C]">it predicts evidence quality rather than merely visualizing confidence.</span>
+              </div>
             </div>
           </div>
         )}
@@ -658,75 +703,75 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
         {activeTabKey === 'roi' && (
           <div className="grid grid-cols-12 gap-3 h-full items-stretch animate-fadeIn">
             {/* Left 7 cols: ADNI Mask-free bridge quantitative results */}
-            <div className="col-span-7 flex flex-col justify-between gap-1.5">
+            <div className="col-span-7 flex flex-col justify-between gap-1 h-full">
               <div>
-                <span className="text-[9.5px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5">
+                <span className="text-[9px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5">
                   QUESTION 04 · MASK-FREE NEURODEGENERATION (ADNI BRIDGE)
                 </span>
-                <h3 className="text-sm font-black text-[#24242A] leading-tight mb-1.5">
+                <h3 className="text-xs sm:text-sm font-black text-[#24242A] leading-tight mb-1">
                   Can reliability help when voxel-wise disease masks do not exist?
                 </h3>
 
-                <div className="p-2 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE] mb-2">
-                  <div className="flex items-center justify-between mb-1 pb-0.5 border-b border-[#D9DDEE]">
+                <div className="p-1.5 rounded-lg bg-[#FAFAFC] border border-[#D9DDEE] mb-1">
+                  <div className="flex items-center justify-between mb-0.5 pb-0.5 border-b border-[#D9DDEE]">
                     <div>
-                      <span className="text-[10px] font-bold text-[#24242A]">ADNI Validation</span>
-                      <span className="text-[9px] text-[#74747D] ml-1.5 font-mono">Target: Medial Temporal / Hippocampal ROI</span>
+                      <span className="text-[9.5px] font-bold text-[#24242A]">ADNI Validation</span>
+                      <span className="text-[8.5px] text-[#74747D] ml-1.5 font-mono">Target: Medial Temporal / Hippocampal ROI</span>
                     </div>
-                    <span className="px-1.5 py-0.2 rounded bg-[#D9D8F4]/50 text-[8.5px] font-mono text-[#6F69C9] font-bold">
+                    <span className="px-1.5 py-0.2 rounded bg-[#D9D8F4]/50 text-[8px] font-mono text-[#6F69C9] font-bold">
                       Mask-free setting
                     </span>
                   </div>
 
                   {/* Quantitative Comparison */}
-                  <div className="grid grid-cols-2 gap-2 text-[10px] mb-1">
-                    <div className="p-1.5 rounded bg-white border border-[#D9DDEE]">
-                      <div className="flex items-center justify-between text-[#74747D] text-[9px] font-mono mb-0.5">
+                  <div className="grid grid-cols-2 gap-1.5 text-[9.5px] mb-1">
+                    <div className="p-1 rounded bg-white border border-[#D9DDEE]">
+                      <div className="flex items-center justify-between text-[#74747D] text-[8.5px] font-mono mb-0.5">
                         <span>HIT@ROI ↑</span>
                         <span className="text-[#6F69C9] font-bold">+0.07</span>
                       </div>
                       <div className="flex items-baseline justify-between font-mono">
                         <span className="text-[#74747D]">0.65 →</span>
-                        <span className="text-xs font-black text-[#6F69C9]">0.72</span>
+                        <span className="text-[11px] font-black text-[#6F69C9]">0.72</span>
                       </div>
-                      <span className="text-[8.5px] text-[#74747D] block mt-0.5">Overlaps target anatomy</span>
+                      <span className="text-[8px] text-[#74747D] block mt-0.5">Overlaps target anatomy</span>
                     </div>
 
-                    <div className="p-1.5 rounded bg-white border border-[#D9DDEE]">
-                      <div className="flex items-center justify-between text-[#74747D] text-[9px] font-mono mb-0.5">
+                    <div className="p-1 rounded bg-white border border-[#D9DDEE]">
+                      <div className="flex items-center justify-between text-[#74747D] text-[8.5px] font-mono mb-0.5">
                         <span>FP@NON-ROI ↓</span>
                         <span className="text-[#6F69C9] font-bold">-0.06 (Better)</span>
                       </div>
                       <div className="flex items-baseline justify-between font-mono">
                         <span className="text-[#74747D]">0.20 →</span>
-                        <span className="text-xs font-black text-[#6F69C9]">0.14</span>
+                        <span className="text-[11px] font-black text-[#6F69C9]">0.14</span>
                       </div>
-                      <span className="text-[8.5px] text-[#74747D] block mt-0.5">Reduced non-specific noise</span>
+                      <span className="text-[8px] text-[#74747D] block mt-0.5">Reduced non-specific noise</span>
                     </div>
                   </div>
 
                   {/* Key Concentration Contrast */}
-                  <div className="p-1.5 rounded bg-[#D9D8F4]/30 border border-[#A7A3DE]/60 flex items-center justify-between text-[10px]">
+                  <div className="p-1 rounded bg-[#D9D8F4]/30 border border-[#A7A3DE]/60 flex items-center justify-between text-[9.5px]">
                     <div>
-                      <span className="font-bold text-[#24242A] block text-[9.5px]">Evidence Concentration Comparison</span>
-                      <span className="text-[8.5px] text-[#626A7C]">Raw overall evidence vs. Low-uncertainty reliable evidence</span>
+                      <span className="font-bold text-[#24242A] block text-[9px]">Evidence Concentration Comparison</span>
+                      <span className="text-[8px] text-[#626A7C]">Raw overall evidence vs. Low-uncertainty reliable evidence</span>
                     </div>
                     <div className="flex items-center gap-2 font-mono">
                       <div className="text-right">
-                        <span className="text-[8.5px] text-[#74747D] block">Overall</span>
-                        <span className="text-xs font-bold text-[#24242A]">0.61</span>
+                        <span className="text-[8px] text-[#74747D] block">Overall</span>
+                        <span className="text-[11px] font-bold text-[#24242A]">0.61</span>
                       </div>
                       <span className="text-[#6F69C9] font-bold text-xs">→</span>
                       <div className="text-right">
-                        <span className="text-[8.5px] text-[#6F69C9] font-bold block">Reliable Only</span>
-                        <span className="text-sm font-black text-[#6F69C9]">0.66</span>
+                        <span className="text-[8px] text-[#6F69C9] font-bold block">Reliable Only</span>
+                        <span className="text-xs font-black text-[#6F69C9]">0.66</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Key Interpretation */}
-                <div className="p-2 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE] text-[10px] text-[#24242A] leading-snug">
+                <div className="p-1.5 rounded-lg bg-[#F4F5FB] border border-[#D9DDEE] text-[9.5px] text-[#24242A] leading-snug">
                   <p className="font-bold text-[#24242A] mb-0.5">
                     The reliable portion of the map is even more concentrated in the target ROI:
                   </p>
@@ -737,63 +782,63 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
               </div>
 
               {/* Bridge to ALS */}
-              <div className="p-2 rounded-lg bg-[#FAFAFC] border-l-3 border-l-[#6F69C9] border border-[#D9DDEE]">
-                <p className="text-[10px] text-[#24242A] font-bold leading-tight">
+              <div className="p-1.5 rounded-lg bg-[#FAFAFC] border-l-3 border-l-[#6F69C9] border border-[#D9DDEE]">
+                <p className="text-[9.5px] text-[#24242A] font-bold leading-tight">
                   ADNI provides the bridge from lesion-mask validation to the mask-free setting needed for ALS.
                 </p>
-                <p className="text-[9px] text-[#626A7C] leading-tight mt-0.5">
+                <p className="text-[8.5px] text-[#626A7C] leading-tight mt-0.5">
                   The next question is whether the same ROI-centric reliability principle remains meaningful in the PULSE ALS cohort.
                 </p>
               </div>
             </div>
 
             {/* Right 5 cols: HTML/CSS ROI Schematic */}
-            <div className="col-span-5 bg-[#FAFAFC] rounded-xl border border-[#D9DDEE] p-3 flex flex-col justify-between shadow-2xs">
+            <div className="col-span-5 bg-[#FAFAFC] rounded-xl border border-[#D9DDEE] p-2.5 flex flex-col justify-between shadow-2xs h-full">
               <div>
-                <span className="text-[9.5px] font-mono font-bold text-[#6F69C9] uppercase block mb-1">
+                <span className="text-[9px] font-mono font-bold text-[#6F69C9] uppercase block mb-0.5">
                   ANATOMICAL PLAUSIBILITY SCHEMATIC
                 </span>
-                <h4 className="text-xs font-bold text-[#24242A] mb-2">
+                <h4 className="text-[11px] font-bold text-[#24242A] mb-1.5">
                   Selective Preservation of Disease-Relevant ROIs
                 </h4>
 
-                <div className="space-y-2 text-[10px]">
+                <div className="space-y-1.5 text-[9.5px]">
                   {/* Step 1 */}
-                  <div className="p-2 rounded-lg bg-white border border-[#D9DDEE]">
+                  <div className="p-1.5 rounded-lg bg-white border border-[#D9DDEE]">
                     <div className="flex items-center justify-between mb-0.5">
                       <span className="font-bold text-[#24242A]">Raw Attribution Map</span>
-                      <span className="text-[8.5px] font-mono text-[#74747D]">Broad & diffuse</span>
+                      <span className="text-[8px] font-mono text-[#74747D]">Broad & diffuse</span>
                     </div>
-                    <p className="text-[9px] text-[#74747D]">
+                    <p className="text-[8.5px] text-[#74747D]">
                       Activations appear both in relevant temporal lobes and non-specific white matter/cortex (FP: 0.20).
                     </p>
                   </div>
 
                   {/* Step 2 */}
-                  <div className="p-2 rounded-lg bg-[#D9D8F4]/30 border border-[#A7A3DE]/70">
+                  <div className="p-1.5 rounded-lg bg-[#D9D8F4]/30 border border-[#A7A3DE]/70">
                     <div className="flex items-center justify-between mb-0.5">
                       <span className="font-bold text-[#6F69C9]">After Reliability Calibration</span>
-                      <span className="text-[8.5px] font-mono text-[#6F69C9] font-bold">Concentration: 0.66</span>
+                      <span className="text-[8px] font-mono text-[#6F69C9] font-bold">Concentration: 0.66</span>
                     </div>
-                    <p className="text-[9px] text-[#24242A]">
+                    <p className="text-[8.5px] text-[#24242A]">
                       High-uncertainty non-specific activations are pruned; reliable evidence concentrates in target pathology regions.
                     </p>
                   </div>
 
                   {/* Step 3 */}
-                  <div className="p-2 rounded-lg bg-white border border-[#D9DDEE]">
+                  <div className="p-1.5 rounded-lg bg-white border border-[#D9DDEE]">
                     <div className="flex items-center justify-between mb-0.5">
                       <span className="font-bold text-[#24242A]">PULSE ALS Extrapolation</span>
-                      <span className="text-[8.5px] font-mono text-[#6F69C9] font-bold">Slide 19</span>
+                      <span className="text-[8px] font-mono text-[#6F69C9] font-bold">Slide 19</span>
                     </div>
-                    <p className="text-[9px] text-[#74747D]">
+                    <p className="text-[8.5px] text-[#74747D]">
                       Enables testing whether weakly supervised evidence concentrates specifically in ALS-relevant brainstem nuclei.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-[#D9DDEE] flex items-center justify-between text-[9px] text-[#74747D] font-mono">
+              <div className="pt-1 border-t border-[#D9DDEE] flex items-center justify-between text-[8.5px] text-[#74747D] font-mono">
                 <span>Validation without voxel masks</span>
                 <span className="text-[#6F69C9] font-bold">Thesis Ch. 6</span>
               </div>
@@ -803,9 +848,10 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
       </div>
 
       {/* =========================================================================
-          BOTTOM: Takeaway & Transition to Slide 19 (~12% height)
+          BOTTOM: Takeaway & Transition to Slide 19 (~11% height)
+          Fixed bottom-safe area with guaranteed clearance (shrink-0 z-10)
       ========================================================================= */}
-      <div className="shrink-0 mt-1.5 p-2 rounded-xl bg-white border border-[#D9D8F4] shadow-2xs">
+      <div className="shrink-0 z-10 mt-1 p-2 rounded-xl bg-white border border-[#D9D8F4] shadow-2xs">
         <p className="text-xs font-bold text-[#24242A] leading-snug text-center">
           Reliability calibration matters most when the evidence is{' '}
           <span className="text-[#6F69C9] font-black">difficult to localize</span>,{' '}
@@ -833,4 +879,3 @@ export const WeakResultsBenchmarkSlide: React.FC<WeakResultsBenchmarkSlideProps>
     </div>
   );
 };
-
